@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="C语言入门C语言介绍     C语言是一门面向过程的计算机编程语言，既适合于系统程序设计，又适合于应用程序设计。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言基础知识点汇总（用来个人复习！）">
+<meta property="og:url" content="http://example.com/2020/02/05/C%E8%AF%AD%E8%A8%80/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="C语言入门C语言介绍     C语言是一门面向过程的计算机编程语言，既适合于系统程序设计，又适合于应用程序设计。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/assigned-c.png">
+<meta property="og:image" content="http://example.com/images/datatype.jpeg">
+<meta property="og:image" content="http://example.com/images/datatype2.png">
+<meta property="og:image" content="http://example.com/images/output.jpeg">
+<meta property="article:published_time" content="2020-02-05T14:30:40.000Z">
+<meta property="article:modified_time" content="2021-03-09T02:53:49.914Z">
+<meta property="article:author" content="Wilburn&#39;s blog">
+<meta property="article:tag" content="c语言">
+<meta property="article:tag" content="基础知识">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/assigned-c.png">
+
+<link rel="canonical" href="http://example.com/2020/02/05/C%E8%AF%AD%E8%A8%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C语言基础知识点汇总（用来个人复习！） | Welcome</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/05/C%E8%AF%AD%E8%A8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wilburn's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C语言基础知识点汇总（用来个人复习！）
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-05 22:30:40" itemprop="dateCreated datePublished" datetime="2020-02-05T22:30:40+08:00">2020-02-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-09 10:53:49" itemprop="dateModified" datetime="2021-03-09T10:53:49+08:00">2021-03-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/c%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">c语言</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="C语言入门"><a href="#C语言入门" class="headerlink" title="C语言入门"></a>C语言入门</h2><h4 id="C语言介绍"><a href="#C语言介绍" class="headerlink" title="C语言介绍"></a>C语言介绍</h4><p>
+    C语言是一门<b><font color="#EE0000">面向过程</font></b>的计算机编程语言，既适合于系统程序设计，又适合于应用程序设计。<a id="more"></a>它是一种抽象化的通用程序设计语言，广泛用于底层开发，尽管C语言提供了许多低级处理的功能，但仍然保持着跨平台的特性。<br />
+    现在最新的C语言标准是 <b>C18</b>。
+</p>
+#### C语言发展历程
+
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/c语言/105958">C语言</a>诞生于美国的贝尔实验室，由D.M.Ritchie以<a herf="https://baike.baidu.com/item/B语言/1845842">B语言</a>为基础发展而来，在它的主体设计完成后，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Ken%20Thompson/3441433">Thompson</a>和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/丹尼斯·里奇/7267171">Ritchie</a>用它完全重写了UNIX，且随着<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/unix/219943">UNIX</a>的发展，c语言也得到了不断的完善。<br><br>1972年C语言诞生，C语言之父是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/丹尼斯·里奇/7267171">丹尼斯·里奇(Dennis Ritchie)</a>，同时也是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/unix/219943">UNIX</a>之父。</p>
+
+<p >
+    <b>C语言标准发布顺序：</b>
+</p>
+
+<ol>
+    <li><b>K&R C</b>：1978年由布莱恩·柯林汉(Brian Kernighan)和丹尼斯·里奇(Dennis Ritchie)出版了《The C Programming Language》，这本书被C语言开发者们称为K&R，很多年来被当作C语言的非正式标准。人们称这个版本的C语言为K&R C。</li>
+    <li><b>ANSI C</b>：1989年ANSI发布了C语言标准，被称为C89、ANSI C.</li>
+    <li><b>ISO/IEC 9899:1990</b>：1990年ISO和IEC把C89标准定为C语言的国际标准，又称C90、ISO C，是C语言的第一个官方版本，因此C89、C90、ANSI C、ISO C、ANSI/ISO C实际上是一套东西。</li>
+    <li><b>ISO/IEC 9899:1990/Cor 1</b>:1994</li>
+    <li><b>ISO/IEC 9899:1990/Amd 1</b>:1995</li>
+    <li><b>ISO/IEC 9899:1990/Cor 2</b>:1996</li>
+    <li><b>ISO/IEC 9899:1999</b>：1999年ISO和IEC发布了C99，是C语言的第二个官方版本。</li>
+    <li><b>ISO/IEC 9899:1999/Cor 1</b>:2001</li>
+    <li><b>ISO/IEC 9899:1999/Cor 2</b>:2004</li>
+    <li><b>ISO/IEC 9899:1999/Cor 3</b>:2007</li>
+    <li><b>ISO/IEC 9899:2011</b>:2011年ISO和IEC发布了C11，是C语言的第三个官方版本。</li>
+    <li><b>ISO/IEC 9899:2011/COR 1</b>:2012</li>
+    <li><b>ISO/IEC 9899:2017</b>:C17只是解决了针对C11报告的许多缺陷。</li>
+    <li><b>ISO/IEC 9899:2018</b>:在 ISO/IEC 9899:2017(C17)的免费草案基础上做了部分修正。</li>
+</ol>
+
+<h4 id="C语言常用编译器"><a href="#C语言常用编译器" class="headerlink" title="C语言常用编译器"></a>C语言常用编译器</h4><p>
+    <b>编译器</b>
+</p>
+
+<ul>
+    <li><b>GCC</b> ：GNU组织开发的开源免费的编译器。</li>
+    <li><b>MinGW</b> ： Windows操作系统下的GCC。</li>
+    <li><b>Clang</b> ： 开源的BSD协议的基于LLVM的编译器。</li>
+    <li><b>Visual C++</b> ： cl.exe，Microsoft VC++自带的编译器。</li>
+</ul>
+
+<p>
+    <b>集成开发环境</b>
+</p>
+
+<ul>
+    <li><b>Code</b> ：Blocks，开源免费的C/C++ IDE。</li>
+    <li><b>CodeLite</b> ：开源、跨平台的C/C++集成开发环境。</li>
+    <li><b>Dev-C++</b> ：可移植的C/C++IDE,Dev C++ 是一款免费开源的 C/C++ IDE，内嵌 GCC 编译器（Linux GCC 编译器的 Windows 移植版），是 NOI、NOIP 等比赛的指定工具。Dev C++ 的优点是体积小（只有几十兆）、安装卸载方便、学习成本低，缺点是调试功能弱。</li>
+    <li><b>C-Free</b> ：C-Free 是一款国产的 Windows 下的C/C++ IDE，最新版本是 5.0，整个软件才 14M，非常轻巧，安装也简单，界面也比 Dev C++ 漂亮。C-Free 的缺点也是调试功能弱。可惜的是，C-Free 已经多年不更新了，组件都老了，只能在 XP、Win7 下运行，在 Win8、Win10 下可能会存在兼容性问题。</li>
+    <li><b>Visual Studio系列</b> ：Windows 下首先推荐大家使用微软开发的 Visual Studio（简称 VS）。</li>
+</ul>
+
+<h4 id="C语言的具体结构"><a href="#C语言的具体结构" class="headerlink" title="C语言的具体结构"></a>C语言的具体结构</h4><p><b>我的第一个程序（Hello World）</b></p>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//先写头文件（就是一条预处理命令, 它的作用是通知C语言编译系统在对C程序进行正式编译之前需做一些预处理工作。）</span></span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line"><span class="comment">//注：在最新的C标准中，main函数前的类型为int而不是void</span></span><br><span class="line"><span class="comment">//再写函数，一个C程序有且只有一个主函数，即main函数。</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    printf(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">	<span class="comment">//return后面是函数的返回值，根据函数类型的不同，返回的值也是不同的。</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>
+    <b>代码格式规范</b>
+</p>
+
+<ul>
+    <li>一个说明或一个语句占一行，例如：包含头文件、一个可执行语句结束都需要换行。</li>
+    <li>函数体内的语句要有明显缩进，通常以按一下<kbd>Tab</kbd>为一个缩进。</li>
+    <li>括号要成对写，如果需要删除的话也要成对删除。</li>
+    <li>当一句可执行语句结束的时候末尾需要有分号。</li>
+    <li>代码中所有符号均为英文半角符号。</li>
+</ul>
+
+<p>
+    <b>定义变量的标识符</b>
+</p>
+
+<ol>
+    <li>标识符<font color="ff3333">必须以字母a~z、 A~Z或下划线开头</font>，后面可跟任意个(可为0)字符，这些字符可以是字母、下划线和数字，其他字符不允许出现在标识符中。 </li>
+    <li>标识符区分大小写字母。</li>
+    <li>标识符的长度，c89规定31个字符以内，c99规定63个字符以内。</li>
+    <li>C语言中的关键字，有特殊意义，不能作为标识符。</li>
+    <li>自定义标识符最好取具有一定意义的字符串，便于记忆和理解。</li>
+</ol>
+
+<p>
+    <b>
+        定义变量赋值
+    </b>
+</p>
+
+<p>变量就是可以变化的量，而每个变量都会有一个名字（标识符）。变量占据内存中一定的存储单元。使用变量之前必须先定义变量，要区分变量名和变量值是两个不同的概念。</p>
+<img src="..\..\..\..\..\images\assigned-c.png">
+
+<ol>
+    ※ 注: <li>赋值语句：<code>int a=1;int b;b=1;</code>但是不能连等，<code>int a=b=1</code>是<b><font color="ff3333"> × </font></b>的</li>
+    <li>定义的所有变量要进行<font color="ff3333">初始化</font>，否则定义的数据可能是计算机储存的数据</li>
+</ol>
+
+<p>
+    <b>C语言基本语句</b>
+</p>
+
+<ul>
+    <li><code>scanf("");</code>——输入语句</li>
+    <li><code>printf("");</code>——输出语句</li>
+    <li><code>gets("");</code>——字符串输入语句</li>
+    <li><code>put("");</code>——字符串输出语句</li>
+    <li><code>//注释内容</code>——单行注释语句</li>
+    <li><code>/*注释内容*/</code>——多行注释</li>
+</ul>
+ ※ 注：在使用scanf("");连续输入字符或字符串时，要注意：
+
+<p>1.在除第一个字符或字符串外前加上空格，来抵消之前输入的空格/回车</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a,b;</span><br><span class="line">	scanf(<span class="string">&quot;%c&quot;</span>,&amp;a)；</span><br><span class="line">	scanf(<span class="string">&quot; %c&quot;</span>,&amp;b);	<span class="comment">//在%c前加上一个空格</span></span><br><span class="line">	printf(<span class="string">&quot;%c,%c&quot;</span>,a,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​     </p>
+<p>2.用fflush清空缓冲区。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">	char a,b;</span><br><span class="line">	scanf(&quot;%c&quot;,&amp;a)；</span><br><span class="line">	fflush(stdin); </span><br><span class="line">	scanf(&quot;%c&quot;,&amp;b);</span><br><span class="line">	printf(&quot;%c,%c&quot;,a,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>3.用getchar吸收字符。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a,b;</span><br><span class="line">	scanf(<span class="string">&quot;%c&quot;</span>,&amp;a)；</span><br><span class="line">	getchar();</span><br><span class="line">	scanf(<span class="string">&quot;%c&quot;</span>,&amp;b);</span><br><span class="line">	printf(<span class="string">&quot;%c,%c&quot;</span>,a,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>4.在第一个%c后面加上一个*c，忽略下一个读入的字符。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a,b;</span><br><span class="line">	scanf(<span class="string">&quot;%c*c&quot;</span>,&amp;a)；</span><br><span class="line">	scanf(<span class="string">&quot;%c&quot;</span>,&amp;b);</span><br><span class="line">	printf(<span class="string">&quot;%c,%c&quot;</span>,a,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>
+    <b>数据类型关键字</b>
+    <ol>
+        <li><code>short</code>——声明短整型变量或函数</li>
+        <li><code>int</code>——声明整型变量或函数</li>
+        <li><code>long</code>——声明长整型变量或函数</li>
+        <li><code>float</code>——声明浮点变量或函数</li>
+        <li><code>double</code>——声明双精度变量或函数</li>
+        <li><code>char</code>——声明字符型变量或函数</li>
+        <li><code>void</code>——声明函数无返回值或无参数，声明无类型指针</li>
+        <li><code>signed</code>——声明有符号类型变量或函数</li>
+        <li><code>unsigned</code>——声明无符号类型变量或函数/li>
+        <li><code>struct</code>——声明结构体变量或函数</li>
+        <li><code>enum</code>——声明枚举类型</li>
+        <li><code>union</code>——声明共用体（联合）数据类型</li>
+    </ol>
+</p>
+<img src="..\..\..\..\..\images\datatype.jpeg">
+
+<img src="..\..\..\..\..\images\datatype2.png">
+
+<p>
+    <b>控制语句</b>
+</p>
+
+<ol>循环语句：<br>
+    <li><code>while</code>——循环语句</li>
+    <li><code>do-while</code>——先执行循环体,然后判断循环条件是否成立. 之后继续循环</li>
+    <li><code>for( ; ; )</code>——循环,可替代while语句; 只是用法不同</li>
+    <li><code>break;</code>——跳出当前循环</li>
+    <li><code>continue;</code>——结束这一轮循环，开始下一轮循环</li>
+</ol>
+<ol>条件语句：<br>
+    <li><code>if/else if</code>——条件语句</li>
+    <li><code>else</code>——条件语句否定分支（与 if 连用）</li>
+    <li><code>goto</code>——无条件跳转语句</li>
+    <li><code>switch()&#123;case 一个整型:语句;default:语句&#125;</code>——用于多项条件选择，case为选择分支,default为其他分支</li>
+</ol>
+<ol>返回语句：<br>
+    <li><code>return</code>——返回语句</li>
+</ol>
+
+<p>
+    <b>存储类型关键字</b>
+</p>
+
+<ol>
+    <li><code>auto</code>——声明自动变量，一般不使用</li>
+    <li><code>extern</code>——声明引用变量</li>
+    <li><code>register</code>——声明积存器变量</li>
+    <li><code>static</code>——声明静态变量</li>
+</ol>
+
+<p>
+    <b>其他关键字</b>
+</p>
+
+<ol>
+    <li><code>const</code>——声明只读变量</li>
+    <li><code>sizeof</code>——计算数据类型长度</li>
+    <li><code>typeof</code>——用于给数据类型取别名</li>
+    <li><code>volatile</code>——说明变量在程序中可被隐含的改变</li>
+</ol>
+
+<p>
+    <b>格式化输出语句</b>
+</p>
+<img src="..\..\..\..\..\images\output.jpeg">
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag"># c语言</a>
+              <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"># 基础知识</a>
+          </div>
+
+        
+
+
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">C语言入门</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.0.1.</span> <span class="nav-text">C语言介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E5%B8%B8%E7%94%A8%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">1.0.2.</span> <span class="nav-text">C语言常用编译器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C%E8%AF%AD%E8%A8%80%E7%9A%84%E5%85%B7%E4%BD%93%E7%BB%93%E6%9E%84"><span class="nav-number">1.0.3.</span> <span class="nav-text">C语言的具体结构</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wilburn's blog"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Wilburn's blog</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wilburn's blog</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
