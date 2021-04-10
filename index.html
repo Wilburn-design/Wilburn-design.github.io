@@ -185,7 +185,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-04-10 20:15:15 / 修改时间：20:15:48" itemprop="dateCreated datePublished" datetime="2021-04-10T20:15:15+08:00">2021-04-10</time>
+              <time title="创建时间：2021-04-10 20:15:15 / 修改时间：20:34:47" itemprop="dateCreated datePublished" datetime="2021-04-10T20:15:15+08:00">2021-04-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -212,125 +212,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="设计模式（OOAD）"><a href="#设计模式（OOAD）" class="headerlink" title="设计模式（OOAD）"></a>设计模式（OOAD）</h1><p><em>注：答案仅为作者个人思路，不保证正确率，答案见代码。</em></p>
-<h3 id="一、策略模式（strategy）"><a href="#一、策略模式（strategy）" class="headerlink" title="一、策略模式（strategy）"></a>一、策略模式（strategy）</h3><ul>
-<li><p>homework1</p>
-<p>In an action adventure game, each character can make use of one weapon at a time, but can change weapons at any time during the game. Your job is to program according to the following class diagram.（一个动作冒险游戏，每个角色一次只能使用一种武器，但是可以在游戏的过程中换武器。下面是类图，请根据类图编写代码。）</p>
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.7.png">
-</li>
-<li><p>homework2</p>
-<p>In a university simulation system, a graduate can have three roles, and can change roles during the runtime, but can have only one role at a time. Your job is to draw the class diagram according to the following code in Java.（一个研究生在校期间，可以具有三种角色：学生、助教、收银员，但同一时刻只能具有一种角色。实现这个系统的代码如下，请根据代码画出类图。）</p>
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.1.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.2.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.3.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.4.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.5.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.6.png">
-</li>
-<li><p>homework3</p>
-<p>In a an online bookstore system, there are a 10% discount on every computer book, a ￥2 discount on every language book, and a ￥10 discount for every ￥100 on all the novel books .（设计一个网上书店，该系统中所有计算机类图书(ComputerBook)每本都有10%的折扣，所有语言类图书(LanguageBook)每本都有2元的折扣，小说类图书(NovelBook)每100元有10元的折扣。请使用策略模式来实现系统，绘制类图并编程实现。</p>
-</li>
-<li><p>report<br>To apply the Strategy Pattern into the design the Flight Simulation System.</p>
-</li>
-</ul>
-<h3 id="二、观察者模式（observe）"><a href="#二、观察者模式（observe）" class="headerlink" title="二、观察者模式（observe）"></a>二、观察者模式（observe）</h3><ul>
-<li><p>相关知识</p>
-<p>1、相关知识：<br>（1）观察者的使用场景</p>
-<p>The Observer Pattern defines a one-to-many dependency between objects so that when one object changes state, all of its dependents are notified and updated automatically.<br>（2）观察者的通用类图</p>
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.8.png">
-</li>
-<li><p>homework1</p>
-<p>In a multiplayer game, many players can join the same team. As one member of the team was attacked by the enemy, all the other members will received the notice and take the action. Your job is to program according to the following class diagram.（一款多人联机对战游戏,在该游戏中,多个玩家可以加入同一战队组成联盟,当战队中某一个成员受到敌人的攻击时将给所有其他盟友发送通知,盟友收到通知后将做出响应。下面是类图，请根据类图编写代码。）</p>
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.9.png">
-</li>
-<li><p>homework2</p>
-<p>Designing an online stock software which has the following functions: 1. Supports two securities trading markets in Shanghai and Shenzhen;2. Support common and VIP stock customers;3. When the price of shares traded on the Shanghai stock exchange fluctuate 3%, the ordinary customer will be notified, and the VIP customers will be notified when the price changes 1%.When the price of the shares traded on the Shenzhen stock exchange is 5%, the ordinary customer will be notified, and the VIP customers will be notified when the price changes 1%. Your job is to draw the class diagram according to the following code in Java.（设计一款在线股票软件,该软件具有如下功能:1.支持上海及深圳两个证券交易市场;2.支持普通和VIP两类股票客户;3.上证交易所上交易的股票价格变动3%时,通知普通客户,价格变动1%时,通知VIP客户; 深证交易所上交易的股票价格变动5%时,通知普通客户,价格变动2%时,通知VIP客户。实现这个系统的代码如下，请根据代码画出类图。）</p>
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.1.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.2.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.3.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.4.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.5.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.6.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.7.png">
-</li>
-<li><p>homework3</p>
-<p>系统名称：国家宝藏游戏系统（National treasure game system）                                                          </p>
-<p>人物角色：凯奇（Cage）                                                         </p>
-<p>两个守护神(Eudemon)：老虎（Tiger）、狮子（Lion）                                 </p>
-<p>两种宝藏（Treasure）：黄金（Gold）、钻石（Diamond）                                </p>
-<p>游戏场景（Scene）：场景中包括1个角色，5只老虎，7只狮子，500箱黄金，100箱钻石                                        </p>
-<p>功能需求：                                                                      </p>
-<p>  1、凯奇可以拿走一定数量的宝藏take（int quantity）；                           </p>
-<p>  2、宝藏可以安排数位守护神看守宝藏guard（Eudemon eudemon）和解除关系的unguard（Eudemon eudemon）方法。                                                     </p>
-<p>  3、每当凯奇拿走宝藏时，都会惊动所有看守该宝藏的守护神notifyEudemon（）             </p>
-<p>  4、守护神在得到通知update（:Treasure,:int）后，都会报告宝藏剩余的数量，并发出攻击attack（）                                                                </p>
-<p>  5、场景中的情节是凯奇拿走了132#箱中的50克黄金，以及3#箱中的100克拉钻石。  </p>
-<p>任务要求：请根据以上背景描述， 设计类图，编写代码并测试验证。    </p>
-</li>
-<li><p>report</p>
-<p>An online stock system: When a stock price fluctuates more than 5%, the system automatically notified to all the shareholders. </p>
-<p>Your job is to…</p>
-<p>(1) Design the class diagram</p>
-<p>(2) program according to your class diagram</p>
-<p>(3) Test your design with the old price is 100, the new price is 98 and 92. </p>
-</li>
-</ul>
-<h3 id="三、装饰者模式"><a href="#三、装饰者模式" class="headerlink" title="三、装饰者模式"></a>三、装饰者模式</h3><ul>
-<li><p>相关知识</p>
-<p>（1）装饰者的使用场景</p>
-<p>The Decorator Pattern attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality.</p>
-<p>（2）装饰者的通用类图</p>
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk3.2.png">
-</li>
-<li><p>homework1<br>Following given example is an class diagram of decorator design pattern. Icecream is a classic example for decorator design pattern. You create a basic icecream and then add toppings to it as you prefer. The added toppings change the taste of the basic icecream.(下面是类图，请根据类图编写代码)。 </p>
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk3.1.png">
-</li>
-<li><p>homework2</p>
-<p>We’re going to create a Shape interface and concrete classes implementing the Shape interface. We will then create an abstract decorator class ShapeDecorator implementing the Shape interface and having Shape object as its instance variable.</p>
-<p>RedShapeDecorator is concrete class implementing ShapeDecorator.</p>
-<p>TestShape, our demo class will use RedShapeDecorator to decorate Shape objects..<br>Codes:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">testShape</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	      Shape circle = <span class="keyword">new</span> Circle();</span><br><span class="line"></span><br><span class="line">	      Shape redCircle = <span class="keyword">new</span> RedShapeDecorator(<span class="keyword">new</span> Circle());</span><br><span class="line"></span><br><span class="line">	      Shape redRectangle = <span class="keyword">new</span> RedShapeDecorator(<span class="keyword">new</span> Rectangle());</span><br><span class="line">	      System.out.println(<span class="string">&quot;Circle with normal border&quot;</span>);</span><br><span class="line">	      circle.draw();</span><br><span class="line"></span><br><span class="line">	      System.out.println(<span class="string">&quot;\nCircle of red border&quot;</span>);</span><br><span class="line">	      redCircle.draw();</span><br><span class="line"></span><br><span class="line">	      System.out.println(<span class="string">&quot;\nRectangle of red border&quot;</span>);</span><br><span class="line">	      redRectangle.draw();</span><br><span class="line">	   &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;  </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">	   <span class="meta">@Override</span></span><br><span class="line">	   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	      System.out.println(<span class="string">&quot;Shape: Rectangle&quot;</span>);</span><br><span class="line">	   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	   <span class="meta">@Override</span></span><br><span class="line">	   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	      System.out.println(<span class="string">&quot;Shape: Circle&quot;</span>);</span><br><span class="line">	   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ShapeDecorator</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;   </span><br><span class="line">	   </span><br><span class="line">       <span class="keyword">protected</span> Shape decoratedShape;</span><br><span class="line"></span><br><span class="line">	   <span class="function"><span class="keyword">public</span> <span class="title">ShapeDecorator</span><span class="params">(Shape decoratedShape)</span></span>&#123;</span><br><span class="line">	      <span class="keyword">this</span>.decoratedShape = decoratedShape;</span><br><span class="line">	   &#125;</span><br><span class="line"></span><br><span class="line">	   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>&#123;</span><br><span class="line">	      decoratedShape.draw();</span><br><span class="line">	   &#125;	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RedShapeDecorator</span> <span class="keyword">extends</span> <span class="title">ShapeDecorator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	   <span class="function"><span class="keyword">public</span> <span class="title">RedShapeDecorator</span><span class="params">(Shape decoratedShape)</span> </span>&#123;</span><br><span class="line">	      <span class="keyword">super</span>(decoratedShape);		</span><br><span class="line">	   &#125;</span><br><span class="line"></span><br><span class="line">	   <span class="meta">@Override</span></span><br><span class="line">	   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	      decoratedShape.draw();	       </span><br><span class="line">	      setRedBorder(decoratedShape);</span><br><span class="line">	   &#125;</span><br><span class="line"></span><br><span class="line">	   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setRedBorder</span><span class="params">(Shape decoratedShape)</span></span>&#123;</span><br><span class="line">	      System.out.println(<span class="string">&quot;Border Color: Red&quot;</span>);</span><br><span class="line">	   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>homework3</p>
-<p>To decorate a simple room with color and curtains, try to provide a solution which contains class diagrams and codes based on your class diagram.(完成类图，请根据类图编写代码）。</p>
-</li>
-<li><p>report</p>
-<p>Consider a window in a windowing system. To allow scrolling of the window’s contents, one may wish to add horizontal or vertical scrollbars to it, as appropriate. Assume windows are represented by instances of the Window class, and assume this class has no functionality for adding scrollbars. One could create a subclass ScrollingWindow that provides them, or create a ScrollingWindowDecorator that adds this functionality to existing Window objects. </p>
-<p>Your job is to…</p>
-</li>
-</ul>
-<h3 id="四、工厂模式"><a href="#四、工厂模式" class="headerlink" title="四、工厂模式"></a>四、工厂模式</h3><ul>
-<li><p>homework1</p>
-<p>Simple TV factory.<br>A TV factory specializes in the production of all kinds of TV sets for each famous TV brand, when a Haier TV set is wanted, it is required to pass the parameter “ Haier” when calling the factory method of the factory,when a Hisense TV set is wanted, we only need to pass the input parameters “ Hisense “, the factory can return different brand of the TV set according to the different parameters.The Factory method pattern is used to simulate the production process of the TV factory.</p>
-<p>简单电视机工厂 某电视机厂专为各知名电视机品牌代工生产各类电视机，当需要海尔牌电视机时只需要在调用该工厂的工厂方法时传入参数“Haier”，需要海信电视机时只需要传入参数“Hisense”，工厂可以根据传入的不同参数返回不同品牌的电视机。现使用简单工厂模式来模拟该电视机工厂的生产过程（下面是类图，请根据类图编写代码。）</p>
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.1.png">
-</li>
-<li><p>homework2</p>
-<p>The following code is about how to decode an image based on the different formats.（实现这个系统的代码如下，请根据代码画出类图。）</p>
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.2.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.3.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.4.png">
-
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.5.png">
-</li>
-<li><p>homework3<br>In a simulation game, you are supposed to create different pets based on the sound they make, e.g, if the sound an animal make is “quack”,then you should create a duck.（模拟游戏中，请根据宠物的声音创建相应的宠物，如宠物发出“嘎嘎“声，应当创建宠物鸭子。请使用工厂模式来实现系统，绘制类图并编程实现。）</p>
-</li>
-<li><p>report</p>
-<img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.6.png"></li>
-</ul>
-
+          <h1 id="设计模式（OOAD）"><a href="#设计模式（OOAD）" class="headerlink" title="设计模式（OOAD）"></a>设计模式（OOAD）</h1><p><em>注：答案仅为作者个人思路，不保证正确率，答案见代码。</em>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/10/OOAD(%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F)%E4%BD%9C%E4%B8%9A/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
