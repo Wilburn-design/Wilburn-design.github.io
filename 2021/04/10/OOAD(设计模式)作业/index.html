@@ -20,28 +20,59 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Welcome">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="设计模式（OOAD）注：答案仅为作者个人思路，不保证正确率，答案见代码。 一、策略模式（strategy） homework1 In an action adventure game, each character can make use of one weapon at a time, but can change weapons at any time during the game. Yo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式（OOAD）">
+<meta property="og:url" content="http://example.com/2021/04/10/OOAD(%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F)%E4%BD%9C%E4%B8%9A/index.html">
 <meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="设计模式（OOAD）注：答案仅为作者个人思路，不保证正确率，答案见代码。 一、策略模式（strategy） homework1 In an action adventure game, each character can make use of one weapon at a time, but can change weapons at any time during the game. Yo">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.7.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.1.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.2.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.3.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.4.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.5.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.6.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.8.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.9.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.1.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.2.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.3.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.4.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.5.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.6.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk2.7.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk3.2.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk3.1.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.1.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.2.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.3.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.4.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.5.png">
+<meta property="og:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.6.png">
+<meta property="article:published_time" content="2021-04-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-04-10T12:13:23.887Z">
 <meta property="article:author" content="Wilburn&#39;s blog">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk1.7.png">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2021/04/10/OOAD(%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F)%E4%BD%9C%E4%B8%9A/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Welcome</title>
+  <title>设计模式（OOAD） | Welcome</title>
   
 
 
@@ -154,9 +185,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -172,10 +204,9 @@
       <meta itemprop="name" content="Welcome">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/04/10/OOAD(%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F)%E4%BD%9C%E4%B8%9A/" class="post-title-link" itemprop="url">设计模式（OOAD）</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          设计模式（OOAD）
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -212,7 +243,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="设计模式（OOAD）"><a href="#设计模式（OOAD）" class="headerlink" title="设计模式（OOAD）"></a>设计模式（OOAD）</h1><p><em>注：答案仅为作者个人思路，不保证正确率，答案见代码。</em></p>
+        <h1 id="设计模式（OOAD）"><a href="#设计模式（OOAD）" class="headerlink" title="设计模式（OOAD）"></a>设计模式（OOAD）</h1><p><em>注：答案仅为作者个人思路，不保证正确率，答案见代码。</em></p>
 <h3 id="一、策略模式（strategy）"><a href="#一、策略模式（strategy）" class="headerlink" title="一、策略模式（strategy）"></a>一、策略模式（strategy）</h3><ul>
 <li><p>homework1</p>
 <p>In an action adventure game, each character can make use of one weapon at a time, but can change weapons at any time during the game. Your job is to program according to the following class diagram.（一个动作冒险游戏，每个角色一次只能使用一种武器，但是可以在游戏的过程中换武器。下面是类图，请根据类图编写代码。）</p>
@@ -331,588 +362,34 @@
 <img src="https://gitee.com/ooad2019_-c9to10/ooad_team_11/tree/master/19001021003%20%E7%8E%8B%E4%BC%AF%E6%96%87/images/hk4.6.png"></li>
 </ul>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"># 设计模式</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/03/%E9%98%BF%E9%87%8C%E4%BA%91%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8%E7%BB%84%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Wilburn's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/03/%E9%98%BF%E9%87%8C%E4%BA%91%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8%E7%BB%84%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">阿里云部署服务器安全组与防火墙问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-03 09:00:00" itemprop="dateCreated datePublished" datetime="2021-03-03T09:00:00+08:00">2021-03-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-10 18:44:00" itemprop="dateModified" datetime="2021-04-10T18:44:00+08:00">2021-04-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="阿里云部署服务器安全组与防火墙问题"><a href="#阿里云部署服务器安全组与防火墙问题" class="headerlink" title="阿里云部署服务器安全组与防火墙问题"></a>阿里云部署服务器安全组与防火墙问题
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/03/%E9%98%BF%E9%87%8C%E4%BA%91%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8%E7%BB%84%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99%E9%97%AE%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/10/git%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Wilburn's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/10/git%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/" class="post-title-link" itemprop="url">git使用小结</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-10 12:00:10" itemprop="dateCreated datePublished" datetime="2020-12-10T12:00:10+08:00">2020-12-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-10 18:43:19" itemprop="dateModified" datetime="2021-04-10T18:43:19+08:00">2021-04-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="git使用小结"><a href="#git使用小结" class="headerlink" title="git使用小结"></a>git使用小结
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/10/git%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/03/%E9%98%BF%E9%87%8C%E4%BA%91%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8%E7%BB%84%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99%E9%97%AE%E9%A2%98/" rel="prev" title="阿里云部署服务器安全组与防火墙问题">
+      <i class="fa fa-chevron-left"></i> 阿里云部署服务器安全组与防火墙问题
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/10/%E9%80%89%E4%BF%AE3D%E5%8A%A8%E7%94%BB%E8%AE%BE%E8%AE%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Wilburn's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/10/%E9%80%89%E4%BF%AE3D%E5%8A%A8%E7%94%BB%E8%AE%BE%E8%AE%A1/" class="post-title-link" itemprop="url">选修3D动画设计</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-10 12:00:10" itemprop="dateCreated datePublished" datetime="2020-12-10T12:00:10+08:00">2020-12-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-10 18:40:28" itemprop="dateModified" datetime="2021-04-10T18:40:28+08:00">2021-04-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Maya/" itemprop="url" rel="index"><span itemprop="name">Maya</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="选修3D动画设计"><a href="#选修3D动画设计" class="headerlink" title="选修3D动画设计"></a>选修3D动画设计</h2><p>个人还蛮喜欢动画的，大一下便选秀了一门3D动画设计。也算是为了缓解学习压力吧。（附渲染图片）
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/10/%E9%80%89%E4%BF%AE3D%E5%8A%A8%E7%94%BB%E8%AE%BE%E8%AE%A1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/KTV%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(JAVA)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Wilburn's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/11/KTV%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(JAVA)/" class="post-title-link" itemprop="url">KTV管理系统(JAVA)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-11 18:00:16" itemprop="dateCreated datePublished" datetime="2020-11-11T18:00:16+08:00">2020-11-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-10 18:43:51" itemprop="dateModified" datetime="2021-04-10T18:43:51+08:00">2021-04-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="KTV管理系统-JAVA"><a href="#KTV管理系统-JAVA" class="headerlink" title="KTV管理系统(JAVA)"></a>KTV管理系统(JAVA)
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/11/KTV%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F(JAVA)/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/04/10/%E5%86%99%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Wilburn's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/10/%E5%86%99%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">写小程序项目遇到的坑</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-10 15:01:00" itemprop="dateCreated datePublished" datetime="2020-04-10T15:01:00+08:00">2020-04-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-10 18:44:44" itemprop="dateModified" datetime="2021-04-10T18:44:44+08:00">2021-04-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" itemprop="url" rel="index"><span itemprop="name">小程序</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="写小程序项目遇到的坑"><a href="#写小程序项目遇到的坑" class="headerlink" title="写小程序项目遇到的坑"></a>写小程序项目遇到的坑
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/04/10/%E5%86%99%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/05/C%E8%AF%AD%E8%A8%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Wilburn's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/05/C%E8%AF%AD%E8%A8%80/" class="post-title-link" itemprop="url">C语言基础知识点汇总（用来个人复习！）</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-05 22:30:40" itemprop="dateCreated datePublished" datetime="2020-02-05T22:30:40+08:00">2020-02-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-10 18:44:11" itemprop="dateModified" datetime="2021-04-10T18:44:11+08:00">2021-04-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/c%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">c语言</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="C语言入门"><a href="#C语言入门" class="headerlink" title="C语言入门"></a>C语言入门
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/05/C%E8%AF%AD%E8%A8%80/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/01/%E4%BD%BF%E7%94%A8Typora%E6%9D%A5%E7%BC%96%E8%BE%91.md/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Wilburn's blog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Welcome">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/01/%E4%BD%BF%E7%94%A8Typora%E6%9D%A5%E7%BC%96%E8%BE%91.md/" class="post-title-link" itemprop="url">使用Typora来编辑.md</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-02-01 12:30:40" itemprop="dateCreated datePublished" datetime="2020-02-01T12:30:40+08:00">2020-02-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-10 18:44:34" itemprop="dateModified" datetime="2021-04-10T18:44:34+08:00">2021-04-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Typora/" itemprop="url" rel="index"><span itemprop="name">Typora</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="使用Typora来编辑-md"><a href="#使用Typora来编辑-md" class="headerlink" title="使用Typora来编辑.md"></a>使用Typora来编辑.md
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/01/%E4%BD%BF%E7%94%A8Typora%E6%9D%A5%E7%BC%96%E8%BE%91.md/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -965,6 +442,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%88OOAD%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">设计模式（OOAD）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%EF%BC%88strategy%EF%BC%89"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、策略模式（strategy）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%EF%BC%88observe%EF%BC%89"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、观察者模式（observe）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E8%A3%85%E9%A5%B0%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、装饰者模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.0.4.</span> <span class="nav-text">四、工厂模式</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
