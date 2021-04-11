@@ -357,7 +357,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-11 10:21:50" itemprop="dateModified" datetime="2021-04-11T10:21:50+08:00">2021-04-11</time>
+                <time title="修改时间：2021-04-11 10:45:41" itemprop="dateModified" datetime="2021-04-11T10:45:41+08:00">2021-04-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -380,13 +380,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="1-左上角返回问题"><a href="#1-左上角返回问题" class="headerlink" title="1.左上角返回问题"></a>1.左上角返回问题</h3><p>若是不想点击返回访问的上一个页面，可以在 onUnload: function () {},方法中添加  wx.reLaunch方法。eg:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">onUnload: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  wx.reLaunch(&#123;</span><br><span class="line">    url: <span class="string">&#x27;../home_page/index&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="2-不同页面之间传值的问题"><a href="#2-不同页面之间传值的问题" class="headerlink" title="2.不同页面之间传值的问题"></a>2.不同页面之间传值的问题</h3><p>只需在URL后面加上’？value=’+value即可，在另一边的onLoad中取出，再将其存入data中。eg:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//传值页面</span></span><br><span class="line">questionnaireContent: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> questionnaireId = e.target.dataset.id;</span><br><span class="line">  wx.navigateTo(&#123;</span><br><span class="line">    url: <span class="string">&#x27;../questionnaire_content/index?questionnaireId=&#x27;</span>+questionnaireId,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//接收页面</span></span><br><span class="line">onLoad: <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.setData(&#123;</span><br><span class="line">    content_index:options.questionnaireId,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="3-想要检查json中的数据可以将其遍历出来"><a href="#3-想要检查json中的数据可以将其遍历出来" class="headerlink" title="3.想要检查json中的数据可以将其遍历出来"></a>3.想要检查json中的数据可以将其遍历出来</h3><p>eg:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.data.radio = <span class="built_in">Array</span>.from(<span class="built_in">this</span>.data.questionnaires, <span class="function"><span class="params">i</span> =&gt;</span> &#123;</span><br><span class="line"> 	<span class="keyword">let</span> answers = <span class="built_in">Array</span>.from(i.questionnaire, <span class="function"><span class="params">j</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">          q_id: j.q_id,</span><br><span class="line">          answer: j.answer</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      name: i.name,</span><br><span class="line">      answers: answers</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">this</span>.data.radio);</span><br></pre></td></tr></table></figure>
-
+          <h3 id="1-左上角返回问题"><a href="#1-左上角返回问题" class="headerlink" title="1.左上角返回问题"></a>1.左上角返回问题</h3><p>若是不想点击返回访问的上一个页面，可以在 onUnload: function () {},方法中添加  wx.reLaunch方法。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/10/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%94%A8%E5%8A%9F%E8%83%BD/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
