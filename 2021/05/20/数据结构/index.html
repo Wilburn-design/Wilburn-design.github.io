@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="数据结构复习（C语言）   中国大学慕课（浙大：陈越、何钦铭教授）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构">
+<meta property="og:url" content="http://example.com/2021/05/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="数据结构复习（C语言）   中国大学慕课（浙大：陈越、何钦铭教授）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181026114956314.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181026115013432.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181026115028605.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181026115044316.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181026115118948.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181026115134161.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181030202740803.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2018103020280133.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2018103020284288.jpg">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181030202857229.jpg">
+<meta property="article:published_time" content="2021-05-20T01:37:00.000Z">
+<meta property="article:modified_time" content="2021-05-21T10:02:38.430Z">
+<meta property="article:author" content="Wilburn&#39;s blog">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="C语言">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20181026114956314.jpg">
+
+<link rel="canonical" href="http://example.com/2021/05/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>数据结构 | Welcome</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wilburn's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数据结构
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-20 09:37:00" itemprop="dateCreated datePublished" datetime="2021-05-20T09:37:00+08:00">2021-05-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-21 18:02:38" itemprop="dateModified" datetime="2021-05-21T18:02:38+08:00">2021-05-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/C%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">C语言</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="数据结构复习（C语言）-中国大学慕课（浙大：陈越、何钦铭教授）"><a href="#数据结构复习（C语言）-中国大学慕课（浙大：陈越、何钦铭教授）" class="headerlink" title="数据结构复习（C语言）   中国大学慕课（浙大：陈越、何钦铭教授）"></a>数据结构复习（C语言）   中国大学慕课（浙大：陈越、何钦铭教授）</h2><a id="more"></a>
+
+<hr>
+<p><em>打卡第一天</em></p>
+<hr>
+<h3 id="第一讲-基本概念"><a href="#第一讲-基本概念" class="headerlink" title="第一讲 基本概念"></a>第一讲 基本概念</h3><h4 id="1-1-什么是数据结构"><a href="#1-1-什么是数据结构" class="headerlink" title="1.1 什么是数据结构"></a>1.1 什么是数据结构</h4><ul>
+<li>写程序计算多项式在给定点x处的值</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">*f(x)=a0+a1x+……+a(n-1)x^n-1+anx^n </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 10</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXK 1e7 <span class="comment">/*被测函数最大重复调用次数*/</span> </span></span><br><span class="line"><span class="comment">/*clock_t是clock()函数返回的变量类型*/</span></span><br><span class="line"><span class="keyword">clock_t</span> start,stop;</span><br><span class="line"><span class="comment">/*记录被测函数的运行时间，以秒为单位*/</span> </span><br><span class="line"><span class="keyword">double</span> duration; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">f1</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">double</span> a[], <span class="keyword">double</span> x)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">f2</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">double</span> a[],<span class="keyword">double</span> x)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">double</span> a[MAXN];</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;MAXN;i++)&#123;</span><br><span class="line">		a[i] = (<span class="keyword">double</span>)i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/*不在测试范围内的准备工作写在clock()调用之前*/</span></span><br><span class="line">	start = clock();<span class="comment">/*开始计时*/</span> </span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;MAXK;i++)&#123;</span><br><span class="line">		f1(MAXN<span class="number">-1</span>,a,<span class="number">1.1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	stop = clock();</span><br><span class="line">	duration = ((<span class="keyword">double</span>)(stop-start))/CLK_TCK/MAXK;</span><br><span class="line">	<span class="comment">/*其他不在测试范围的处理写在后面例如输出duration的值*/</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;tickets1 = %f\n&quot;</span>,(<span class="keyword">double</span>)(stop-start));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;f1:%6.2e\n&quot;</span>,duration); </span><br><span class="line">	<span class="comment">/*不在测试范围内的准备工作写在clock()调用之前*/</span></span><br><span class="line">	start = clock();<span class="comment">/*开始计时*/</span> </span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;MAXK;i++)&#123;</span><br><span class="line">		f2(MAXN<span class="number">-1</span>,a,<span class="number">1.1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	stop = clock();</span><br><span class="line">	duration = ((<span class="keyword">double</span>)(stop-start))/CLK_TCK/MAXK;</span><br><span class="line">	<span class="comment">/*其他不在测试范围的处理写在后面例如输出duration的值*/</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;tickets2 = %f\n&quot;</span>,(<span class="keyword">double</span>)(stop-start));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;f2:%6.2e\n&quot;</span>,duration); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/*普通算法*/</span> </span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">f1</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">double</span> a[], <span class="keyword">double</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">double</span> p = a[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		p+=(a[i]*<span class="built_in">pow</span>(x,i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*秦九韶算法*/</span> </span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">f2</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">double</span> a[],<span class="keyword">double</span> x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">double</span> p = a[n];</span><br><span class="line">	<span class="keyword">for</span>(i=n;i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">		p=a[i<span class="number">-1</span>]+x*p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tickets1 &#x3D; 2112.000000</span><br><span class="line">f1:2.11e-007</span><br><span class="line">tickets2 &#x3D; 287.000000</span><br><span class="line">f2:2.87e-008</span><br><span class="line"></span><br><span class="line">--------------------------------</span><br><span class="line">Process exited after 5.22 seconds with return value 13</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+<p>相差了一个数量级，秦九韶完胜！！！</p>
+<ul>
+<li><p>什么是数据结构？</p>
+<ul>
+<li><p><strong>数据对象</strong>在计算机中的组织方式</p>
+</li>
+<li><p>数据对象必定与一系列加在其上的<strong>操作</strong>相关联</p>
+</li>
+<li><p>完成这些操作所用的方法就是<strong>算法</strong></p>
+</li>
+<li><p><strong>抽象数据类型</strong>（只描述对象集合相关操作集<strong>“是什么”</strong>，并不涉及<strong>“如何做到”</strong>的问题）</p>
+<ul>
+<li><p>数据类型</p>
+<ul>
+<li>数据对象集</li>
+<li>数据集合相关联的操作集</li>
+</ul>
+</li>
+<li><p>抽象：描述数据类型的方法不依赖于具体实现</p>
+<ul>
+<li>与存放的机器无关</li>
+<li>与数据存储的物理结构无关</li>
+<li>与实现操作的算法和编程语言均无关</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-什么是算法"><a href="#1-2-什么是算法" class="headerlink" title="1.2 什么是算法"></a>1.2 什么是算法</h4><ul>
+<li><p>算法定义（Algorithm）</p>
+<ul>
+<li>一个有限指令集</li>
+<li>接受一些输入（有些情况下不需要输入）</li>
+<li>产生输出</li>
+<li>一定在有限步骤之后终止</li>
+<li>每一条指令必须<ul>
+<li>有充分明确的目标，不可以有歧义</li>
+<li>计算机能处理的范围之内</li>
+<li>描述应不依赖于任何一种就算及语言以及具体的实现手段</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>什么是好的算法？</p>
+<ul>
+<li><p><strong>空间复杂度S(n)</strong> —— 根据算法写成的程序在执行时 <strong>占用存储单元的长度</strong>。</p>
+<ul>
+<li><p>最好情况复杂度T<sub>best</sub>(n)</p>
+</li>
+<li><p>最坏情况复杂度T<sub>worst</sub>(n)</p>
+</li>
+<li><p>平均时间复杂度T<sub>avg</sub>(n)</p>
+<p>T<sub>best</sub>(n) &lt; T<sub>avg</sub>(n) &lt; T<sub>worst</sub>(n)</p>
+</li>
+</ul>
+</li>
+<li><p><strong>时间复杂度T(n)</strong> —— 根据算法写成的程序在执行时 <strong>耗费时间的长度</strong>。</p>
+</li>
+</ul>
+</li>
+<li><p>复杂度的渐进表示法</p>
+<ul>
+<li>T(n) = O(f(n))表示存在常数C&gt;0,n<sub>0</sub>&gt;0使得当n≥n<sub>0</sub>时有T(n)≤C·f(n) ——&gt; O(f(n))是T(n)的上界</li>
+<li>T(n) = Ω(g(n))表示存在常数C&gt;0,n<sub>0</sub>&gt;0使得当n≥n<sub>0</sub>时有T(n)≥C·g(n) ——&gt; Ω(g(n))是T(n)的下界</li>
+<li>T(n) = Θ(h(n))表示同时有T(n)=O(h(n))和T(n)=Ω(h(n)) ——&gt; Θ(h(n))既是T(n)的上界又是T(n)的下界</li>
+</ul>
+</li>
+<li><p>复杂度分析小窍门</p>
+<ul>
+<li>若两端算法分别有复杂度T<sub>1</sub>(n)=O(f<sub>1</sub>(n))和T<sub>2</sub>(n)=O(f<sub>2</sub>(n))，则<ul>
+<li>T<sub>1</sub>(n) + T<sub>2</sub>(n) = max(O(f<sub>1</sub>(n)),O(f<sub>2</sub>(n)))</li>
+<li>T<sub>1</sub>(n) × T<sub>2</sub>(n) = O(f<sub>1</sub>(n)×f<sub>2</sub>(n)) </li>
+</ul>
+</li>
+<li>若T(n)是关于n的k阶多项式，那么T(n) = Θ(n<sup>k</sup>)</li>
+<li>一个for循环的时间复杂度等于循环次数乘以循环体的代码复杂度</li>
+<li>if-else结构的复杂度取决于if的条件判断复杂度和两个分支部分的复杂度，总体复杂度取三者中最大</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-3-最大子列和问题"><a href="#1-3-最大子列和问题" class="headerlink" title="1.3 最大子列和问题"></a>1.3 最大子列和问题</h4><p>给定N个整数的序列{A<sub>1</sub>,A<sub>2</sub>,…,A<sub>N</sub>},求函数f(i,j) = max{0,∑A<sub>k</sub>}的最大值。</p>
+<ul>
+<li><p>算法1 O(n<sup>3</sup>) </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubSequm1</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ThisSum, MaxSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i, j, k;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++)  &#123;  <span class="comment">// i 是子列左端的位置</span></span><br><span class="line">        <span class="keyword">for</span> (j = i; j &lt; N; j++)&#123; <span class="comment">//j 是子列右端的位置</span></span><br><span class="line">            ThisSum = <span class="number">0</span>;              </span><br><span class="line">            <span class="keyword">for</span> (k = i; k &lt;= j; k++)   </span><br><span class="line">                ThisSum += A[k];      </span><br><span class="line">            <span class="keyword">if</span> (ThisSum&gt;MaxSum)  <span class="comment">// 如果刚得到的子列和更大</span></span><br><span class="line">                MaxSum = ThisSum; <span class="comment">// 更新结果</span></span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;<span class="comment">// 循环结束</span></span><br><span class="line">    <span class="keyword">return</span> MaxSum;   </span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>算法2 O(n<sup>2</sup>) </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubSequm1</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ThisSum, MaxSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i, j, k;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++)  &#123;  <span class="comment">// i 是子列左端的位置</span></span><br><span class="line">        <span class="keyword">for</span> (j = i; j &lt; N; j++)&#123; <span class="comment">//j 是子列右端的位置</span></span><br><span class="line">            ThisSum +=A[j];               </span><br><span class="line">                  <span class="comment">// 对于相同i ,的不同j ,只要在j-1次循环的基础上累加1 项即可</span></span><br><span class="line"> </span><br><span class="line">            <span class="keyword">if</span> (ThisSum&gt;MaxSum)  <span class="comment">// 如果刚得到的子列和更大</span></span><br><span class="line">                MaxSum = ThisSum; <span class="comment">// 更新结果</span></span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;<span class="comment">// 循环结束</span></span><br><span class="line">    <span class="keyword">return</span> MaxSum;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>分而治之 O(nlog<sub>n</sub>)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Max3</span><span class="params">( <span class="keyword">int</span> A, <span class="keyword">int</span> B, <span class="keyword">int</span> C )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 返回3个整数中的最大值，注计算机会自动把满足三目表达式的看做一个整体 */</span></span><br><span class="line">    <span class="keyword">return</span> A &gt; B ? A &gt; C ? A : C : B &gt; C ? B : C;</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">DivideAndConquer</span><span class="params">( <span class="keyword">int</span> List[], <span class="keyword">int</span> left, <span class="keyword">int</span> right )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 分治法求List[left]到List[right]的最大子列和 */</span></span><br><span class="line">    <span class="keyword">int</span> MaxLeftSum, MaxRightSum; <span class="comment">/* 存放左右子问题的解 */</span></span><br><span class="line">    <span class="keyword">int</span> MaxLeftBorderSum, MaxRightBorderSum; <span class="comment">/*存放跨分界线的结果*/</span></span><br><span class="line">   </span><br><span class="line">    <span class="keyword">int</span> LeftBorderSum, RightBorderSum;</span><br><span class="line">    <span class="keyword">int</span> center, i;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">if</span>( left == right )  &#123; <span class="comment">/* 递归的终止条件，子列只有1个数字 */</span></span><br><span class="line">        <span class="keyword">if</span>( List[left] &gt; <span class="number">0</span> )  <span class="keyword">return</span> List[left];</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="comment">/* 下面是&quot;分&quot;的过程 */</span></span><br><span class="line">    center = ( left + right ) / <span class="number">2</span>; <span class="comment">/* 找到中分点 */</span></span><br><span class="line">    <span class="comment">/* 递归求得两边子列的最大和，注：递归算法经过return会挑出当前递归，返回上一层递归 */</span></span><br><span class="line">    MaxLeftSum = DivideAndConquer( List, left, center );</span><br><span class="line">    MaxRightSum = DivideAndConquer( List, center+<span class="number">1</span>, right );</span><br><span class="line">   </span><br><span class="line">    <span class="comment">/* 下面求跨分界线的最大子列和 */</span></span><br><span class="line">    MaxLeftBorderSum = <span class="number">0</span>; LeftBorderSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>( i=center; i&gt;=left; i-- ) &#123; <span class="comment">/* 从中线向左扫描 */</span></span><br><span class="line">        LeftBorderSum += List[i];</span><br><span class="line">        <span class="keyword">if</span>( LeftBorderSum &gt; MaxLeftBorderSum )</span><br><span class="line">            MaxLeftBorderSum = LeftBorderSum;</span><br><span class="line">    &#125; <span class="comment">/* 左边扫描结束 */</span></span><br><span class="line">   </span><br><span class="line">    MaxRightBorderSum = <span class="number">0</span>; RightBorderSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>( i=center+<span class="number">1</span>; i&lt;=right; i++ ) &#123; <span class="comment">/* 从中线向右扫描 */</span></span><br><span class="line">        RightBorderSum += List[i];</span><br><span class="line">        <span class="keyword">if</span>( RightBorderSum &gt; MaxRightBorderSum )</span><br><span class="line">            MaxRightBorderSum = RightBorderSum;</span><br><span class="line">    &#125; <span class="comment">/* 右边扫描结束 */</span></span><br><span class="line">   </span><br><span class="line">    <span class="comment">/* 下面返回&quot;治&quot;的结果 */</span></span><br><span class="line">    <span class="keyword">return</span> Max3( MaxLeftSum, MaxRightSum, MaxLeftBorderSum + MaxRightBorderSum );</span><br><span class="line">&#125;</span><br><span class="line">   </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum3</span><span class="params">( <span class="keyword">int</span> List[], <span class="keyword">int</span> N )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 保持与前2种算法相同的函数接口 */</span></span><br><span class="line">    <span class="keyword">return</span> DivideAndConquer( List, <span class="number">0</span>, N<span class="number">-1</span> );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>在线处理算法 O(n)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">MaxSubseqSum4</span><span class="params">(<span class="keyword">int</span> A[], <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ThisSum, MaxSum;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    ThisSum = MaxSum = <span class="number">0</span>; </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; N; i++)&#123; </span><br><span class="line">        ThisSum += A[i];<span class="comment">//向右累加</span></span><br><span class="line">        <span class="keyword">if</span> (ThisSum&gt;MaxSum)</span><br><span class="line">            MaxSum = ThisSum; <span class="comment">// 发现更大和则更新当前结果</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (ThisSum &lt; <span class="number">0</span>)  <span class="comment">// 如果当前子列和为负数</span></span><br><span class="line">            ThisSum = <span class="number">0</span>; <span class="comment">// 则不可能使后面部分和增大，抛弃之</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> MaxSum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="第二讲-线性结构"><a href="#第二讲-线性结构" class="headerlink" title="第二讲 线性结构"></a>第二讲 线性结构</h3><h4 id="2-1-线性表及其实现"><a href="#2-1-线性表及其实现" class="headerlink" title="2.1 线性表及其实现"></a>2.1 线性表及其实现</h4><ul>
+<li><p>多项式表示</p>
+<ul>
+<li>数据</li>
+<li>链表</li>
+</ul>
+</li>
+<li><p>什么是线性表？</p>
+<p>“<strong>线性表(Linear List)**”：有同类型</strong>数据元素<strong>构成</strong>有序序列**的线性结构</p>
+<ul>
+<li>表中元素个数称为线性表的<strong>长度</strong></li>
+<li>线性表没有元素时，成为<strong>空表</strong></li>
+<li>表起始位置称<strong>表头</strong>，表结束位置成<strong>表尾</strong></li>
+</ul>
+</li>
+<li><p>线性表的抽象数据类型描述</p>
+<ul>
+<li><p>类型名称：线性表（List)</p>
+</li>
+<li><p>数据对象集：线性表是n(≥0)个元素构成的有序序列(a<sub>1</sub>,a<sub>2</sub>,…,a<sub>n</sub>)</p>
+</li>
+<li><p>操作集：线性表L∈List，整数i表示位置，元素X∈ElementType，</p>
+</li>
+<li><p>线性表的基本操作主要有：</p>
+<ul>
+<li><code>List MakeEmpty()</code>：初始化一个空线性表L；</li>
+<li><code>ElementType FindKth(int K,List L)</code>：根据位序K，返回相应元素；</li>
+<li><code>int Find(ElementType X,List L)</code>：在线性表L中查找X的第一次出现位置；</li>
+<li><code>void Insert(ElementType X, int i, List L)</code>：在位序i前插入一个新元素X；</li>
+<li><code>void Delete(int i,List L)</code>：删除指定位序i的元素；</li>
+<li><code>int Length(List L)</code>：返回线性表L的长度n</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>线性表的顺序存储实现</p>
+<ul>
+<li><p>利用数组的<strong>连续存储空间顺序存放</strong>线性表的各元素</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">List</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">	ElementType Data[MAXSIZE];</span><br><span class="line">	<span class="keyword">int</span> Last;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//struct LNode L;</span></span><br><span class="line">List PtrL;</span><br><span class="line"><span class="comment">/*初始化（建立空的顺序表）*/</span></span><br><span class="line"><span class="comment">//List MakeEmpty()&#123;</span></span><br><span class="line"><span class="comment">//	PtrL = (List)malloc(sizeof(struct LNode));</span></span><br><span class="line"><span class="comment">//	PtrL-&gt;Last = -1;</span></span><br><span class="line"><span class="comment">//	return PtrL; </span></span><br><span class="line"><span class="comment">//&#125; </span></span><br><span class="line"><span class="comment">/*按值查找O(n)*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">(ElementType X, List PtrL)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(i&lt;=PtrL-&gt;Last&amp;&amp;PtrL-&gt;Data[i]!=X)</span><br><span class="line">		i++;</span><br><span class="line">	<span class="keyword">if</span>(i&gt;PtrL-&gt;Last)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*按序查找*/</span></span><br><span class="line"><span class="function">ElementType <span class="title">FindKth</span><span class="params">(<span class="keyword">int</span> K,List PtrL)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(K&lt;<span class="number">0</span>||PtrL-&gt;Last&lt;K)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;不存在该元素&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> PtrL-&gt;Data[K];</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">/*插入（第i个位置上插入一个值为X的新元素）O(n) */</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Insert</span><span class="params">(ElementType X,<span class="keyword">int</span> i,List PtrL)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	<span class="keyword">if</span>(PtrL -&gt; Last == MAXSIZE<span class="number">-1</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;表满了&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">0</span>||i&gt;PtrL-&gt;Last+<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;位置不合法&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(j=PtrL-&gt;Last;j&gt;=i;j--)</span><br><span class="line">		PtrL-&gt;Data[j+<span class="number">1</span>] = PtrL-&gt;Data[j];</span><br><span class="line">	PtrL-&gt;Data[i] = X;</span><br><span class="line">	PtrL-&gt;Last++;</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*删除O(n)*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(<span class="keyword">int</span> i,List PtrL)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> j;</span><br><span class="line">	<span class="keyword">if</span>(i&lt;<span class="number">0</span>||i&gt;PtrL-&gt;Last)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;不存在第%d个元素&quot;</span>,i); </span><br><span class="line">		<span class="keyword">return</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;=PtrL-&gt;Last;j++)</span><br><span class="line">		PtrL-&gt;Data[j<span class="number">-1</span>] = PtrL-&gt;Data[j];</span><br><span class="line">		PtrL-&gt;Last--;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	PtrL = MakeEmpty();</span><br><span class="line">	Insert(<span class="number">11</span>,<span class="number">0</span>,PtrL);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;在线性表PtrL-Data[0]插入11\n&quot;</span>);</span><br><span class="line">	Insert(<span class="number">25</span>,<span class="number">0</span>,PtrL);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;在线性表PtrL-Data[0]插入25\n&quot;</span>);</span><br><span class="line">	Insert(<span class="number">33</span>,<span class="number">0</span>,PtrL);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;在线性表PtrL-Data[0]插入33\n&quot;</span>);</span><br><span class="line">	Insert(<span class="number">77</span>,<span class="number">0</span>,PtrL);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;在线性表PtrL-Data[0]插入77\n&quot;</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;此时的线性表为：&quot;</span>); </span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;PtrL-&gt;Last+<span class="number">1</span>;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,PtrL-&gt;Data[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;查找值为11的下标是：%d\n&quot;</span>,Find(<span class="number">11</span>,PtrL));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;下标为3的线性表的值是：%d\n&quot;</span>,FindKth(<span class="number">3</span>,PtrL));</span><br><span class="line">	Delete(<span class="number">2</span>,PtrL);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;删除线性表中下标为2的元素\n&quot;</span>);</span><br><span class="line">	Delete(<span class="number">2</span>,PtrL);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;删除线性表中下标为2的元素\n&quot;</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;此时的线性表为：&quot;</span>); </span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;PtrL-&gt;Last+<span class="number">1</span>;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,PtrL-&gt;Data[i]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>); </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">在线性表PtrL-Data[0]插入11</span><br><span class="line">在线性表PtrL-Data[0]插入25</span><br><span class="line">在线性表PtrL-Data[0]插入33</span><br><span class="line">在线性表PtrL-Data[0]插入77</span><br><span class="line">此时的线性表为：77 33 25 11</span><br><span class="line">查找值为11的下标是：3</span><br><span class="line">下标为3的线性表的值是：11</span><br><span class="line">删除线性表中下标为2的元素</span><br><span class="line">删除线性表中下标为2的元素</span><br><span class="line">此时的线性表为：77 33</span><br><span class="line"></span><br><span class="line">--------------------------------</span><br><span class="line">Process exited after 0.5634 seconds with return value 0</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure></li>
+<li><p>线性表的链式存储实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">List</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">	ElementType Data;</span><br><span class="line">	List Next;</span><br><span class="line">&#125;;</span><br><span class="line">List PtrL;</span><br><span class="line"><span class="comment">/*初始化链表*/</span></span><br><span class="line"><span class="function">List <span class="title">MakeEmpty</span><span class="params">()</span></span>&#123;</span><br><span class="line">	List PtrL = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct LNode));</span><br><span class="line">	PtrL = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">return</span> PtrL;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*求链表的长度*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Length</span><span class="params">(List PtrL)</span></span>&#123;</span><br><span class="line">	List L = PtrL;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(L)&#123;</span><br><span class="line">		L = L-&gt;Next;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> i;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">/*按序查找*/</span></span><br><span class="line"><span class="function">List <span class="title">FindKth</span><span class="params">(<span class="keyword">int</span> K,List PtrL)</span></span>&#123;</span><br><span class="line">	List L = PtrL;</span><br><span class="line">	<span class="keyword">int</span> i=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span>(L&amp;&amp;i&lt;K)&#123;</span><br><span class="line">		L = L-&gt;Next;</span><br><span class="line">		i++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(i==K)&#123;</span><br><span class="line">		<span class="keyword">return</span> L;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*按值查找*/</span></span><br><span class="line"><span class="function">List <span class="title">Find</span><span class="params">(ElementType X,List PtrL)</span></span>&#123;</span><br><span class="line">	List L = PtrL;</span><br><span class="line">	<span class="keyword">while</span>(L&amp;&amp;X!=L-&gt;Data)&#123;</span><br><span class="line">		L = L-&gt;Next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> L;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*插入*/</span></span><br><span class="line"><span class="function">List <span class="title">Insert</span><span class="params">(ElementType X,<span class="keyword">int</span> i,List PtrL)</span></span>&#123;</span><br><span class="line">	List L,P;</span><br><span class="line">	<span class="keyword">if</span>(i==<span class="number">1</span>)&#123;</span><br><span class="line">		L = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct LNode));</span><br><span class="line">		L-&gt;Data = X;</span><br><span class="line">		L-&gt;Next = PtrL;</span><br><span class="line">		<span class="keyword">return</span> L; </span><br><span class="line">	&#125;</span><br><span class="line">	P = FindKth(i<span class="number">-1</span>,PtrL);</span><br><span class="line">	<span class="keyword">if</span>(!P)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;结点不存在&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>; </span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		L = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct LNode));</span><br><span class="line">		L-&gt;Data = X;</span><br><span class="line">		L-&gt;Next = P-&gt;Next;</span><br><span class="line">		P-&gt;Next = L;</span><br><span class="line">		<span class="keyword">return</span> PtrL;</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*删除*/</span></span><br><span class="line"><span class="function">List <span class="title">Delete</span><span class="params">(<span class="keyword">int</span> i,List PtrL)</span></span>&#123;</span><br><span class="line">	List L,P;</span><br><span class="line">	<span class="keyword">if</span>(i==<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(PtrL)&#123;</span><br><span class="line">			L = PtrL;</span><br><span class="line">			PtrL = PtrL-&gt;Next;</span><br><span class="line">			<span class="built_in">free</span>(L);</span><br><span class="line">			<span class="keyword">return</span> PtrL;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	P = FindKth(i<span class="number">-1</span>,PtrL);</span><br><span class="line">	L = P-&gt;Next;</span><br><span class="line">	<span class="keyword">if</span>(P==<span class="literal">NULL</span>||L==<span class="literal">NULL</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;结点错误\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line"></span><br><span class="line">		P-&gt;Next = L-&gt;Next;</span><br><span class="line">		<span class="built_in">free</span>(L);</span><br><span class="line">		<span class="keyword">return</span> PtrL;</span><br><span class="line">	&#125;	</span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">(List L)</span></span>&#123;</span><br><span class="line">	List t;</span><br><span class="line">	<span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;当前链表为：&quot;</span>);</span><br><span class="line">	<span class="keyword">for</span>(t = L;t;t =t-&gt;Next)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d  &quot;</span>,t-&gt;Data);</span><br><span class="line">		flag = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(flag)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;NULL&quot;</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>); </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	PtrL = MakeEmpty();</span></span><br><span class="line"><span class="comment">//	Print(PtrL);</span></span><br><span class="line">	PtrL = Insert(<span class="number">11</span>,<span class="number">1</span>,PtrL);</span><br><span class="line">	PtrL = Insert(<span class="number">25</span>,<span class="number">1</span>,PtrL);</span><br><span class="line">	PtrL = Insert(<span class="number">33</span>,<span class="number">2</span>,PtrL);</span><br><span class="line">	PtrL = Insert(<span class="number">77</span>,<span class="number">3</span>,PtrL);</span><br><span class="line">	Print(PtrL);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;当前链表长度为：%d\n&quot;</span>,Length(PtrL));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;此时链表中第二个结点的值是：%d\n&quot;</span>,FindKth(<span class="number">2</span>,PtrL)-&gt;Data);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;查找22是否在该链表中：&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(Find(<span class="number">22</span>,PtrL))</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;是！\n&quot;</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;否！\n&quot;</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;查找33是否在该链表中：&quot;</span>);</span><br><span class="line">	<span class="keyword">if</span>(Find(<span class="number">33</span>,PtrL))</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;是！\n&quot;</span>);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;否！\n&quot;</span>);</span><br><span class="line">	PtrL = Delete(<span class="number">1</span>,PtrL);</span><br><span class="line">	PtrL = Delete(<span class="number">3</span>,PtrL);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;----------删除后-----\n&quot;</span>); </span><br><span class="line">	Print(PtrL);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">当前链表为：NULL</span><br><span class="line">当前链表为：25  33  77  11</span><br><span class="line">当前链表长度为：4</span><br><span class="line">此时链表中第二个结点的值是：33</span><br><span class="line">查找22是否在该链表中：否！</span><br><span class="line">查找33是否在该链表中：是！</span><br><span class="line">----------删除后-----</span><br><span class="line">当前链表为：33  77</span><br><span class="line"></span><br><span class="line">--------------------------------</span><br><span class="line">Process exited after 0.3281 seconds with return value 0</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>广义表(Generalized List)</p>
+<ul>
+<li><p>广义表是线性表的推广</p>
+</li>
+<li><p>对于线性表而言，n个元素都是基本的单元素</p>
+</li>
+<li><p>广义表中，这些元素不仅可以是单元素也可以是另一个广义表</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">GNode</span> *<span class="title">GList</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GNode</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> Tag;	<span class="comment">/*标志域：0表示结点是单元素，1表示结点是广义表*/</span></span><br><span class="line">	<span class="class"><span class="keyword">union</span>&#123;</span>	<span class="comment">/*子表指针域SubList与单元素数据域Data复用，即共用存储空间*/</span></span><br><span class="line">		ElementType Data;</span><br><span class="line">		GList SubList;	</span><br><span class="line">	&#125;URegion</span><br><span class="line">	GList Next;	<span class="comment">/*指向后继结点*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>多重链表</p>
+<p>双向链表<strong>不</strong>属于多重链表</p>
+<ul>
+<li>十字链表</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><em>打卡第二天</em></p>
+<hr>
+<h4 id="2-2-堆栈"><a href="#2-2-堆栈" class="headerlink" title="2.2 堆栈"></a>2.2 堆栈</h4><ul>
+<li><p>什么是堆栈(Stack)？</p>
+<p>具有一定操作约束的线性表，只在一端<strong>（栈顶，Top）</strong>做插入、删除。</p>
+<p><strong>插入数据：入栈（Push）</strong></p>
+<p><strong>删除数据：出栈（Pop）</strong> </p>
+<p>出栈方式计算</p>
+<p>​    卡特兰数：</p>
+<p>​    递推关系的解为：</p>
+<p>​    h(n)=C(2n,n)/(n+1) (n=0,1,2,…)</p>
+<p>​    递推关系的另类解为：</p>
+<p>​    h(n)=C(2n,n)-C(2n,n+1)(n=0,1,2,…)</p>
+<p><strong>后入先出：Last In First Out（LIFO）</strong></p>
+<ul>
+<li><p>前缀表达式：运算符号位与两个运算数之前。如，- + a * b c / d e</p>
+</li>
+<li><p>中缀表达式：运算符号位与两个运算数之间。如，a + b * c - d / e</p>
+</li>
+<li><p>后缀表达式：运算符号位于连个运算数之后。如，a b c * + d e / -</p>
+<ul>
+<li>后缀表达式求值策略：从左向右“扫描”，逐个处理运算数和运算符号</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>堆栈的抽象数据类型描述</p>
+<ul>
+<li>类型名称：堆栈（Stack）</li>
+<li>数据对象集：一个有0个或多个元素的有穷线性表</li>
+<li>操作集：长度为MaxSize的堆栈S∈Stack，堆栈元素item∈ElementType</li>
+</ul>
+<ol>
+<li><code>Stack CreateStack(int Size)</code>：生成空堆栈，其最大长度为MaxSize</li>
+<li><code>int IsFull(Stack S,int MaxSize)</code>：判断堆栈S是否已满</li>
+<li><code>void Push(Stack S,ElementType item)</code>：将元素item压入栈内</li>
+<li><code>int IsEmpty(Stack S)</code>：判断堆栈S是否为空</li>
+<li><code>ElementType Pop(Stack S)</code>：删除并返回栈顶元素</li>
+</ol>
+</li>
+<li><p>栈的顺序存储实现</p>
+<p>栈的顺序存储结构通常由一个<strong>一维数组</strong>和一个记录<strong>栈顶</strong>元素位置的变量组成</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Stack</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span>&#123;</span></span><br><span class="line">	ElementType *Data;</span><br><span class="line">	<span class="keyword">int</span> Top;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//初始化堆栈</span></span><br><span class="line"><span class="function">Stack <span class="title">CreateStack</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">	S = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct SNode));</span><br><span class="line">	S-&gt;Data = (ElementType *)<span class="built_in">malloc</span>(MaxSize*<span class="keyword">sizeof</span>(ElementType));</span><br><span class="line">	S-&gt;Top = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">return</span> S;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//判断堆栈是否已满</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">IsFull</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (S-&gt;Top == MaxSize<span class="number">-1</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//入栈</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(Stack S,ElementType X)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(IsFull(S))&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;堆栈满\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	S-&gt;Data[++(S-&gt;Top)] = X;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//判断堆栈是否为空</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">IsNull</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (S-&gt;Top == <span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//出栈</span></span><br><span class="line"><span class="function">ElementType <span class="title">Pop</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(IsNull(S))&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;堆栈为空\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> S-&gt;Data[(S-&gt;Top)--];</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Stack S = CreateStack(S);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;1入栈\n&quot;</span>);</span><br><span class="line">	Push(S,<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;2入栈\n&quot;</span>);</span><br><span class="line">	Push(S,<span class="number">2</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;3入栈\n&quot;</span>);</span><br><span class="line">	Push(S,<span class="number">3</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d出栈\n&quot;</span>,Pop(S));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d出栈\n&quot;</span>,Pop(S));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d出栈\n&quot;</span>,Pop(S));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1入栈</span><br><span class="line">2入栈</span><br><span class="line">3入栈</span><br><span class="line">3出栈</span><br><span class="line">2出栈</span><br><span class="line">1出栈</span><br><span class="line"></span><br><span class="line">--------------------------------</span><br><span class="line">Process exited after 0.03336 seconds with return value 0</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure></li>
+<li><p>栈的链式储存实现</p>
+<p>栈的链式存储结构实际上就是一个<strong>单链表</strong>，叫做<strong>链栈</strong>。插入和删除操作只能在链栈的栈顶进行。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Stack</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span>&#123;</span></span><br><span class="line">	ElementType Data;</span><br><span class="line">	Stack Next;</span><br><span class="line">&#125;;</span><br><span class="line">Stack S;</span><br><span class="line"><span class="comment">//初始化链栈 </span></span><br><span class="line"><span class="function">Stack <span class="title">CreateStack</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">	S = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct SNode)); </span><br><span class="line">	S-&gt;Next = <span class="literal">NULL</span>; </span><br><span class="line">	<span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//入栈 </span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">(ElementType X,Stack S)</span></span>&#123;</span><br><span class="line">	Stack Tmp = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct SNode));</span><br><span class="line">	Tmp-&gt;Data = X;</span><br><span class="line">	Tmp-&gt;Next = S-&gt;Next;</span><br><span class="line">	S-&gt;Next = Tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//判断堆栈是否为空 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">IsNull</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (S-&gt;Next == <span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//出栈 </span></span><br><span class="line"><span class="function">ElementType <span class="title">Pop</span><span class="params">(Stack S)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(IsNull(S))&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;堆栈为空&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	Stack Tmp = S-&gt;Next;</span><br><span class="line">	ElementType val = Tmp-&gt;Data;</span><br><span class="line">	S-&gt;Next = Tmp-&gt;Next;</span><br><span class="line">	<span class="built_in">free</span>(Tmp);</span><br><span class="line">	<span class="keyword">return</span> val;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	S = CreateStack(S);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;1入栈\n&quot;</span>);</span><br><span class="line">	Push(<span class="number">1</span>,S);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;2入栈\n&quot;</span>);</span><br><span class="line">	Push(<span class="number">2</span>,S);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;3入栈\n&quot;</span>);</span><br><span class="line">	Push(<span class="number">3</span>,S);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d出栈\n&quot;</span>,Pop(S));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d出栈\n&quot;</span>,Pop(S));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d出栈\n&quot;</span>,Pop(S));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1入栈</span><br><span class="line">2入栈</span><br><span class="line">3入栈</span><br><span class="line">3出栈</span><br><span class="line">2出栈</span><br><span class="line">1出栈</span><br><span class="line"></span><br><span class="line">--------------------------------</span><br><span class="line">Process exited after 0.2672 seconds with return value 0</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure></li>
+<li><p>中缀表达式求值</p>
+<p>基本策略：将中缀表达式转换为后缀表达式，然后求值</p>
+<p>中缀表达式如何转换成后缀表达式？</p>
+<p>从头到尾读取中缀表达式的每个对象，对不同对象按不同的情况处理。</p>
+<ul>
+<li><p>运算数：直接输出</p>
+</li>
+<li><p>左括号：压入堆栈</p>
+</li>
+<li><p>右括号：将栈顶的运算符弹出并输出，直到遇到左括号(出栈，不输出)</p>
+</li>
+<li><p>运算符</p>
+<ul>
+<li>若优先级大于栈顶运算符时，则把它压栈</li>
+<li>若优先级小于等于栈顶运算符时，将栈顶运算符弹出并输出；再比较新的栈顶运算符，直到该运算符大于栈顶运算符优先级为止，然后将该运算符压栈</li>
+</ul>
+</li>
+<li><p>若各对象处理完毕，则把堆栈中存留的运算符一并输出</p>
+</li>
+</ul>
+</li>
+<li><p>堆栈的其他应用</p>
+<ul>
+<li>函数调用及递归实现</li>
+<li>深度优先搜索</li>
+<li>回溯算法</li>
+<li>……</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-3-队列"><a href="#2-3-队列" class="headerlink" title="2.3 队列"></a>2.3 队列</h4><ul>
+<li><p>定义：具有一定操作约束的线性表</p>
+<ul>
+<li><p>插入和删除操作：只能在一段插入，而在另一端删除</p>
+</li>
+<li><p>数据插入：入队列(AddQ)</p>
+</li>
+<li><p>数据深处：出队列(DeleteQ)</p>
+</li>
+<li><p>先来先服务</p>
+</li>
+<li><p>先进先出：FIFO</p>
+</li>
+</ul>
+</li>
+<li><p>抽象数据类型描述</p>
+<ul>
+<li>类型名称：队列(Queue)</li>
+<li>数据对象集：一个有0个或多个元素的有穷线性表</li>
+<li>操作集：长度为MaxSize的队列Q∈Queue，队列元素item∈ElementType</li>
+</ul>
+<ol>
+<li>Queue CreatQueue(int MaxSize)：生成长度为MaxSize的空队列</li>
+<li>int IsFullQ(Queue Q,ElementType item)：将数据元素item插入队列Q中</li>
+<li>void AddQ(Queue Q,ElementType item)：将数据元素item插入队列Q中</li>
+<li>int IsEmptyQ(Queue Q)：判断队列Q是否为空</li>
+<li>ElementType DeleteQ(Queue Q)：将队头数据元素从队列中删除并返回</li>
+</ol>
+</li>
+<li><p>队列的顺序存储实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">Queue</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QNode</span>&#123;</span></span><br><span class="line">	ElementType Data[MaxSize];</span><br><span class="line">	<span class="keyword">int</span> front;</span><br><span class="line">	<span class="keyword">int</span> rear;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//初始化队列</span></span><br><span class="line"><span class="function">Queue <span class="title">CreateQueue</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Queue Q = (Queue)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct QNode));</span><br><span class="line">	Q-&gt;front = <span class="number">-1</span>;</span><br><span class="line">	Q-&gt;rear = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">return</span> Q;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//判断队列是否已满</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">IsFull</span><span class="params">(Queue Q)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> ((Q-&gt;rear+<span class="number">1</span>)%MaxSize == Q-&gt;front);</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//入队</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddQ</span><span class="params">(Queue Q,ElementType X)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(IsFull(Q))&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;队列已满\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>; </span><br><span class="line">	&#125;</span><br><span class="line">	Q-&gt;rear = (Q-&gt;rear+<span class="number">1</span>)%MaxSize;</span><br><span class="line">	Q-&gt;Data[Q-&gt;rear] = X;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//判断队列是否为空</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">IsEmpty</span><span class="params">(Queue Q)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (Q-&gt;front == Q-&gt;rear);</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//出队</span></span><br><span class="line"><span class="function">ElementType <span class="title">DeleteQ</span><span class="params">(Queue Q)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(IsEmpty(Q))&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;队列为空\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125; </span><br><span class="line">	Q-&gt;front = (Q-&gt;front+<span class="number">1</span>)%MaxSize;</span><br><span class="line">	<span class="keyword">return</span> Q-&gt;Data[Q-&gt;front];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Queue Q = CreateQueue();</span><br><span class="line">	AddQ(Q,<span class="number">3</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;3入队\n&quot;</span>);</span><br><span class="line">	AddQ(Q,<span class="number">5</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;5入队\n&quot;</span>);</span><br><span class="line">	AddQ(Q,<span class="number">11</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;11入队\n&quot;</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d出队\n&quot;</span>,DeleteQ(Q));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d出队\n&quot;</span>,DeleteQ(Q));</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">3入队</span><br><span class="line">5入队</span><br><span class="line">11入队</span><br><span class="line">3出队</span><br><span class="line">5出队</span><br><span class="line"></span><br><span class="line">--------------------------------</span><br><span class="line">Process exited after 0.9975 seconds with return value 0</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure></li>
+<li><p>队列的顺序存储实现</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">Queue</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">List</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">	ElementType Data;</span><br><span class="line">	List Next; </span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QNode</span>&#123;</span></span><br><span class="line">	List rare;</span><br><span class="line">	List front;</span><br><span class="line">&#125;; </span><br><span class="line"><span class="comment">//初始化队列</span></span><br><span class="line"><span class="function">Queue <span class="title">CreateQueue</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Queue Q;</span><br><span class="line">	Q = (Queue)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct QNode));</span><br><span class="line">	Q-&gt;front = <span class="literal">NULL</span>;</span><br><span class="line">	Q-&gt;rare = <span class="literal">NULL</span>;</span><br><span class="line">	<span class="keyword">return</span> Q;</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//入队</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddQ</span><span class="params">(ElementType X,Queue Q)</span></span>&#123;</span><br><span class="line">	List L = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">	L-&gt;Data = X;</span><br><span class="line">	<span class="keyword">if</span>(Q-&gt;rare == <span class="literal">NULL</span>)&#123;</span><br><span class="line">		Q-&gt;front = L;</span><br><span class="line">		Q-&gt;rare = L;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	Q-&gt;rare-&gt;Next = L;</span><br><span class="line">	Q-&gt;rare = L;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//判断队列是否为空 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">IsEmpty</span><span class="params">(Queue Q)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (Q-&gt;front ==<span class="literal">NULL</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//出队</span></span><br><span class="line"><span class="function">ElementType <span class="title">DeleteQ</span><span class="params">(Queue Q)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(IsEmpty(Q))&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;队列为空\n&quot;</span>);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	List Tmp = Q-&gt;front;</span><br><span class="line">	<span class="keyword">if</span>(Q-&gt;front == Q-&gt;rare) &#123;</span><br><span class="line">		Q-&gt;front = Q-&gt;rare = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		Q-&gt;front = Tmp-&gt;Next;</span><br><span class="line">	&#125;</span><br><span class="line">	ElementType Tmp2 = Tmp-&gt;Data;</span><br><span class="line">	<span class="built_in">free</span>(Tmp);</span><br><span class="line">	<span class="keyword">return</span> Tmp2;</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	Queue Q = CreateQueue();</span><br><span class="line">	AddQ(<span class="number">1</span>,Q);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;入队1\n&quot;</span>); </span><br><span class="line">	AddQ(<span class="number">2</span>,Q);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;入队2\n&quot;</span>); </span><br><span class="line">	AddQ(<span class="number">3</span>,Q);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;入队3\n&quot;</span>); </span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;出队%d\n&quot;</span>,DeleteQ(Q));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;出队%d\n&quot;</span>,DeleteQ(Q));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;出队%d\n&quot;</span>,DeleteQ(Q));</span><br><span class="line">	DeleteQ(Q);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">入队1</span><br><span class="line">入队2</span><br><span class="line">入队3</span><br><span class="line">出队1</span><br><span class="line">出队2</span><br><span class="line">出队3</span><br><span class="line">队列为空</span><br><span class="line"></span><br><span class="line">--------------------------------</span><br><span class="line">Process exited after 0.2437 seconds with return value 0</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多项式相加相乘</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">List</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> coef;</span><br><span class="line">	<span class="keyword">int</span> expon;</span><br><span class="line">	List link;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Attach</span><span class="params">(<span class="keyword">int</span> coef,<span class="keyword">int</span> expon,List *rear)</span></span>&#123;</span><br><span class="line">	List L = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">	L-&gt;coef = coef;</span><br><span class="line">	L-&gt;expon = expon;</span><br><span class="line">	L-&gt;link = <span class="literal">NULL</span>; </span><br><span class="line">	(*rear)-&gt;link = L;</span><br><span class="line">	*rear = L;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//读入多项式 </span></span><br><span class="line"><span class="function">List <span class="title">CreateList</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="keyword">int</span> coef,expon;</span><br><span class="line">	List Front;</span><br><span class="line">	List Tmp; </span><br><span class="line">	List Rear;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	Rear = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">	Rear-&gt;link = <span class="literal">NULL</span>;</span><br><span class="line">	Tmp = Rear;</span><br><span class="line">	Front = Rear;</span><br><span class="line">	<span class="keyword">while</span>(n--)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;coef,&amp;expon);</span><br><span class="line">		Attach(coef,expon,&amp;Rear);</span><br><span class="line">	&#125;</span><br><span class="line">	Front = Front-&gt;link;</span><br><span class="line">	<span class="built_in">free</span>(Tmp);<span class="comment">//删除头部空结点 </span></span><br><span class="line">	<span class="keyword">return</span> Front; 	</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//多项式相加</span></span><br><span class="line"><span class="function">List <span class="title">Add</span><span class="params">(List L1,List L2)</span></span>&#123;</span><br><span class="line">	List Rear = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">	Rear-&gt;link = <span class="literal">NULL</span>;</span><br><span class="line">	List Front = Rear;</span><br><span class="line">	List Tmp1 = L1;</span><br><span class="line">	List Tmp2 = L2;</span><br><span class="line">	<span class="keyword">while</span>(Tmp1&amp;&amp;Tmp2)&#123;<span class="comment">//判断从左到右系数依此降低 </span></span><br><span class="line">		<span class="keyword">if</span>(Tmp1-&gt;expon&gt;Tmp2-&gt;expon)&#123;</span><br><span class="line">			Attach(Tmp1-&gt;coef,Tmp1-&gt;expon,&amp;Rear);</span><br><span class="line">			Tmp1 = Tmp1-&gt;link;</span><br><span class="line">		&#125;<span class="keyword">else</span> <span class="keyword">if</span>(Tmp1-&gt;expon&lt;Tmp2-&gt;expon)&#123;</span><br><span class="line">			Attach(Tmp2-&gt;coef,Tmp2-&gt;expon,&amp;Rear);</span><br><span class="line">			Tmp2 = Tmp2-&gt;link;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">int</span> sum = Tmp1-&gt;coef+Tmp2-&gt;coef;</span><br><span class="line">			<span class="keyword">if</span>(sum!=<span class="number">0</span>)&#123;</span><br><span class="line">				Attach(sum,Tmp1-&gt;expon,&amp;Rear);</span><br><span class="line">			&#125;</span><br><span class="line">			Tmp1 = Tmp1-&gt;link;</span><br><span class="line">			Tmp2 = Tmp2-&gt;link;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//将剩余的依此加入 </span></span><br><span class="line">	<span class="keyword">while</span>(Tmp1)&#123;</span><br><span class="line">		Attach(Tmp1-&gt;coef,Tmp1-&gt;expon,&amp;Rear);</span><br><span class="line">		Tmp1 = Tmp1-&gt;link;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span>(Tmp2)&#123;</span><br><span class="line">		Attach(Tmp2-&gt;coef,Tmp2-&gt;expon,&amp;Rear);</span><br><span class="line">		Tmp2 = Tmp2-&gt;link;</span><br><span class="line">	&#125;</span><br><span class="line">	List Temp = Front;</span><br><span class="line">	Front = Front-&gt;link;</span><br><span class="line">	<span class="built_in">free</span>(Temp);</span><br><span class="line">	<span class="keyword">return</span> Front;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">List <span class="title">Multiply</span><span class="params">(List L1,List L2)</span></span>&#123;</span><br><span class="line">	<span class="comment">//判断是否为空 </span></span><br><span class="line">	<span class="keyword">if</span>(!L1||!L2)&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	List Rear = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">	Rear-&gt;link = <span class="literal">NULL</span>;</span><br><span class="line">	List Front = Rear;</span><br><span class="line">	List Tmp1 = L1;</span><br><span class="line">	List Tmp2 = L2;</span><br><span class="line">	List Temp;</span><br><span class="line">	<span class="keyword">while</span>(Tmp2)&#123;</span><br><span class="line">		Attach(Tmp1-&gt;coef*Tmp2-&gt;coef,Tmp1-&gt;expon+Tmp2-&gt;expon,&amp;Rear);</span><br><span class="line">		Tmp2 = Tmp2-&gt;link;</span><br><span class="line">	&#125;</span><br><span class="line">	Tmp1 = Tmp1-&gt;link;</span><br><span class="line">	<span class="keyword">while</span>(Tmp1)&#123;</span><br><span class="line">		Tmp2 = L2;</span><br><span class="line">		Rear = Front;<span class="comment">//将Rear置为头结点 </span></span><br><span class="line">		<span class="keyword">while</span>(Tmp2)&#123;</span><br><span class="line">			<span class="keyword">int</span> coef = Tmp1-&gt;coef*Tmp2-&gt;coef;</span><br><span class="line">			<span class="keyword">int</span> expon = Tmp1-&gt;expon+Tmp2-&gt;expon;</span><br><span class="line">			<span class="keyword">while</span>(Rear-&gt;link&amp;&amp;Rear-&gt;link-&gt;expon&gt;expon)&#123;<span class="comment">//找出插入的位置 </span></span><br><span class="line">				Rear = Rear-&gt;link;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(Rear-&gt;link&amp;&amp;Rear-&gt;link-&gt;expon==expon)&#123;<span class="comment">//如果指数相等 </span></span><br><span class="line">				<span class="keyword">if</span>(Rear-&gt;link-&gt;coef+coef)&#123;<span class="comment">//如果系数相加不为零 </span></span><br><span class="line">					Rear-&gt;link-&gt;coef+=coef;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span>&#123;<span class="comment">//系数相加等于零，删除 </span></span><br><span class="line">					Temp = Rear-&gt;link;</span><br><span class="line">					Rear-&gt;link = Temp-&gt;link;</span><br><span class="line">					<span class="built_in">free</span>(Temp);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;<span class="comment">//插入在链表中 </span></span><br><span class="line">				Temp =(List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">				Temp-&gt;coef = coef;</span><br><span class="line">				Temp-&gt;expon = expon;</span><br><span class="line">				Temp-&gt;link = Rear-&gt;link;</span><br><span class="line">				Rear-&gt;link = Temp;</span><br><span class="line">				Rear = Rear-&gt;link;</span><br><span class="line">			&#125;</span><br><span class="line">			Tmp2 = Tmp2-&gt;link;</span><br><span class="line">		&#125;</span><br><span class="line">		Tmp1 = Tmp1-&gt;link;</span><br><span class="line">	&#125;</span><br><span class="line">	Temp = Front;</span><br><span class="line">	Front=Front-&gt;link;</span><br><span class="line">	<span class="built_in">free</span>(Temp);</span><br><span class="line">	<span class="keyword">return</span> Front;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Print</span><span class="params">(List L)</span></span>&#123;</span><br><span class="line">	List Tmp = L;</span><br><span class="line">	<span class="keyword">while</span>(Tmp)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d %d &quot;</span>,Tmp-&gt;coef,Tmp-&gt;expon);</span><br><span class="line">		Tmp = Tmp-&gt;link;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125; </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	List L1,L2;</span><br><span class="line">	L1 = CreateList();</span><br><span class="line">	L2 = CreateList();</span><br><span class="line">	Print(Multiply(L1,L2));</span><br><span class="line">	Print(Add(L1,L2));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">4 3 4 -5 2 6 1 -2 0</span><br><span class="line">3 5 20 -7 4 3 1</span><br><span class="line">15 24 -25 22 30 21 -10 20 -21 8 35 6 -33 5 14 4 -15 3 18 2 -6 1</span><br><span class="line">5 20 -4 4 -5 2 9 1 -2 0</span><br><span class="line"></span><br><span class="line">--------------------------------</span><br><span class="line">Process exited after 40.26 seconds with return value 10</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p><em>打卡第三天</em></p>
+<hr>
+<h3 id="第三讲-树（上）"><a href="#第三讲-树（上）" class="headerlink" title="第三讲 树（上）"></a>第三讲 树（上）</h3><h4 id="3-1-树与树的表示"><a href="#3-1-树与树的表示" class="headerlink" title="3.1 树与树的表示"></a>3.1 树与树的表示</h4><ul>
+<li><p>什么是树？</p>
+<p>客观世界中许多事物存在层次关系</p>
+<ul>
+<li>人类社会家谱</li>
+<li>社会组织结构</li>
+<li>图书信息管理</li>
+<li>……</li>
+</ul>
+</li>
+<li><p>查找(Searching)</p>
+<p>查找：根据某个给定的<strong>关键字K</strong>，从<strong>集合R</strong>中找出关键字与<strong>K</strong>相同的记录</p>
+<ul>
+<li>静态查找：集合中记录是固定的<ul>
+<li>没有插入和删除操作，只有查找</li>
+</ul>
+</li>
+<li>动态查找：集合中记录时动态变化的<ul>
+<li>除查找，还可能发生插入和删除</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>静态查找</p>
+<p>方法1：顺序查找（时间复杂度O(n)）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line">  <span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 100</span></span><br><span class="line">  <span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line">  <span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">List</span>;</span> </span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">  	ElementType Data[MAXSIZE];</span><br><span class="line">  	<span class="keyword">int</span> length;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="function">List <span class="title">CreateEmpty</span><span class="params">()</span></span>&#123;</span><br><span class="line">  	List L = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">  	L-&gt;length = <span class="number">0</span>;</span><br><span class="line">  	<span class="keyword">return</span> L;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(List L,ElementType X)</span></span>&#123;</span><br><span class="line">  	L-&gt;Data[++L-&gt;length] = X;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">SequentialSearch</span><span class="params">(List Tbl,ElementType K)</span></span>&#123;</span><br><span class="line">  	<span class="keyword">int</span> i;</span><br><span class="line">  	Tbl-&gt;Data[<span class="number">0</span>] = K;</span><br><span class="line">  	<span class="keyword">for</span>(i=Tbl-&gt;length;Tbl-&gt;Data[i]!=K;i--);</span><br><span class="line">  	<span class="keyword">return</span> i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  	<span class="keyword">int</span> n;</span><br><span class="line">  	List L = CreateEmpty();</span><br><span class="line">  	Add(L,<span class="number">1</span>);</span><br><span class="line">  	Add(L,<span class="number">2</span>);</span><br><span class="line">  	Add(L,<span class="number">3</span>);</span><br><span class="line">  	Add(L,<span class="number">4</span>);</span><br><span class="line">  	Add(L,<span class="number">5</span>);</span><br><span class="line">  	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n)!=EOF)&#123;</span><br><span class="line">  		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,SequentialSearch(L,n));</span><br><span class="line">  	&#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法2：二分查找（时间复杂度O(logn)）</p>
+<ul>
+<li>前提：数据的关键字满足<strong>有序</strong>，并且连续存放（<strong>数组</strong>）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;malloc.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 100</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NotFound -1 </span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElementType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">List</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">	ElementType Data[MAXSIZE];</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">&#125;; </span><br><span class="line"><span class="function">List <span class="title">CreateEmpty</span><span class="params">()</span></span>&#123;</span><br><span class="line">	List L = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct Node));</span><br><span class="line">	L-&gt;length = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Add</span><span class="params">(List L,ElementType X)</span></span>&#123;</span><br><span class="line">	L-&gt;Data[L-&gt;length++] = X;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">BinarySearch</span><span class="params">(List Tbl,ElementType X)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> left,mid,right;</span><br><span class="line">	left = <span class="number">0</span>;</span><br><span class="line">	right = Tbl-&gt;length<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span>(left&lt;=right)&#123;</span><br><span class="line">		mid = (left+right)/<span class="number">2</span>;</span><br><span class="line">		<span class="keyword">if</span>(Tbl-&gt;Data[mid]&lt;X)&#123;</span><br><span class="line">			left = mid+<span class="number">1</span>;</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(Tbl-&gt;Data[mid]&gt;X)&#123;</span><br><span class="line">			right = mid<span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> mid;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> NotFound;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	ElementType n;</span><br><span class="line">	List L = CreateEmpty();</span><br><span class="line">	Add(L,<span class="number">5</span>);</span><br><span class="line">	Add(L,<span class="number">13</span>); </span><br><span class="line">	Add(L,<span class="number">19</span>); </span><br><span class="line">	Add(L,<span class="number">21</span>); </span><br><span class="line">	Add(L,<span class="number">37</span>); </span><br><span class="line">	Add(L,<span class="number">56</span>); </span><br><span class="line">	Add(L,<span class="number">64</span>); </span><br><span class="line">	Add(L,<span class="number">75</span>); </span><br><span class="line">	Add(L,<span class="number">80</span>); </span><br><span class="line">	Add(L,<span class="number">88</span>); </span><br><span class="line">	Add(L,<span class="number">92</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;n);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,BinarySearch(L,n)+<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">88</span><br><span class="line">10</span><br><span class="line">--------------------------------</span><br><span class="line">Process exited after 4.672 seconds with return value 0</span><br><span class="line">请按任意键继续. . .</span><br></pre></td></tr></table></figure></li>
+<li><p>树的定义</p>
+<p><strong>树（Tree）</strong>：n(n≥0)个结点构成的有限集合</p>
+<ul>
+<li>当n=0时，称为<strong>空树</strong>；</li>
+<li>对于任一棵<strong>非空树</strong>(n＞0)，它具备以下性质：<ul>
+<li>树中有一个称为“<strong>根（Root）</strong>”的特殊结点，用<strong>r</strong>表示</li>
+<li>其余结点可分为m(m&gt;0)个<strong>互不相交的</strong>有限集T<sub>1</sub>,T<sub>2</sub>,…,T<sub>m</sub>，其中每个集合本身又是一棵树，称为原来树的“<strong>子树（SubTree）</strong>”</li>
+<li>子树是<strong>不相交</strong>的</li>
+<li>除了根结点外，每个<strong>结点有且仅有一个父结点</strong></li>
+<li>一棵N个结点的树有N-1条边</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>树的一些基本术语</p>
+<ol>
+<li><strong>结点的度（Degree）</strong>结点的<strong>子树个数</strong></li>
+<li><strong>树的度</strong>：树的所有结点中<strong>最大</strong>的度数</li>
+<li><strong>叶结点（Leaf）</strong>：<strong>度为0</strong>的结点</li>
+<li><strong>父结点（Parent）</strong>：有子树的结点是其子树的根结点的父结点</li>
+<li><strong>子结点（Child）</strong>：若A结点是B结点的父结点，则称B结点是A结点的子结点；子结点也称孩子结点</li>
+<li><strong>兄弟结点（Sibling）</strong>：具有同一父结点的各结点彼此是兄弟结点</li>
+<li><strong>路径和路径长度：</strong>从结点n<sub>1</sub>到n<sub>k</sub>的<strong>路径</strong>为一个结点序列n<sub>1</sub>，n<sub>2</sub>，…，n<sub>k</sub>，n<sub>i</sub>是n<sub>i+1</sub>的父结点。路径所包含边的个数为<strong>路径的长度</strong></li>
+<li><strong>祖先结点（Ancestor）</strong>：沿<strong>树根到某一结点路径</strong>上所有结点都是这个结点的祖先结点</li>
+<li><strong>子孙结点（Descendant）</strong>：某一结点的<strong>子树中的所有结点</strong>是这个结点的子孙</li>
+<li><strong>结点的层次（Level）</strong>：规定<strong>根结点在1层</strong>，其他任意结点的层数是其父结点的层数加1</li>
+<li><strong>树的深度（Depth）</strong>：树中所有结点中的<strong>最大层次</strong>是这棵树的深度</li>
+</ol>
+</li>
+<li><p>树的表示</p>
+<p><strong>儿子 - 兄弟表示法</strong>（二叉树其实就是儿子-兄弟表示法的链表右移 45° 得到的结果）</p>
+<ul>
+<li>Element 存值</li>
+<li>FirstChild 指向第一个儿子</li>
+<li>NextSibling 指向下一个兄弟</li>
+</ul>
+<table style="text-align:center">
+    <tr>
+        <th colspan="2">Element</th>
+    </tr>
+    <tr>
+        <td>FirstChild</td>
+        <td>NextSibiling</td>
+    </tr>
+</table>
+
+
+
+</li>
+</ul>
+<h4 id="3-2-二叉树及存储结构"><a href="#3-2-二叉树及存储结构" class="headerlink" title="3.2 二叉树及存储结构"></a>3.2 二叉树及存储结构</h4><ul>
+<li><p>二叉树的定义及性质</p>
+<ul>
+<li><p>二叉树的定义：有一个有穷的结点集合</p>
+<ul>
+<li><p>这个集合<strong>可以为空</strong></p>
+</li>
+<li><p>若不为空，则它是由根结点合称为其左子树T<sub>L</sub>和右子树T<sub>R</sub>的两个不相交的二叉树组成</p>
+</li>
+<li><p>二叉树具体五种基本形态</p>
+<ol>
+<li>空树</li>
+<li>只有一个结点</li>
+<li>一个结点和左子树</li>
+<li>一个结点和右子树</li>
+<li>一个结点和左子树和右子树</li>
+</ol>
+<img src="https://img-blog.csdnimg.cn/20181026114956314.jpg">
+</li>
+<li><p>二叉树的子树有左右顺序之分（一般的度为二的树没有左右顺序之分）</p>
+</li>
+<li><p>特殊二叉树</p>
+<ul>
+<li>斜二叉树（Skewed Binary Tree）</li>
+</ul>
+<img src="https://img-blog.csdnimg.cn/20181026115013432.jpg">
+
+<ul>
+<li><p>完美二叉树（Perfect Binary Tree）、满二叉树（Full Binary Tree）</p>
+<img src="https://img-blog.csdnimg.cn/20181026115028605.jpg">
+</li>
+<li><p>完全二叉树（Complete Binary Tree)</p>
+<p>有n个结点的二叉树，对树中结点按从上至下、从左至右顺序进行编号，编号为i（1 ≤ i ≤ n）结点与满二叉树中编号为i结点在二叉树中位置相同</p>
+<img src="https://img-blog.csdnimg.cn/20181026115044316.jpg">
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>二叉树的几个重要性质</p>
+<ul>
+<li><p>一个二叉树第i层最大结点数为：<strong>2<sup>i-1</sup>，i≥1</strong></p>
+</li>
+<li><p>深度为k的二叉树有最大结点总数为：<strong>2<sup>k</sup>-1，k≥1</strong></p>
+</li>
+<li><p>对任何非空二叉树T，若<strong>n<sub>0</sub>**表示叶结点的个数、</strong>n<sub>2</sub><strong>是度为</strong>2<strong>的非叶结点个数，那么两者满足关系</strong>n<sub>0</sub>=n<sub>2</sub>+1**</p>
+<p>推导：n<sub>0</sub>+n<sub>1</sub>+n<sub>2</sub>-1=0×n<sub>0</sub>+1×n<sub>1</sub>+2×n<sub>2</sub>（从下向上看总的边数等于从上向下看总的边数）</p>
+</li>
+</ul>
+</li>
+<li><p>二叉树的抽象数据类型定义</p>
+<ul>
+<li><p>类型名称：二叉树</p>
+</li>
+<li><p>数据对象集：一个有穷的结点集合</p>
+<p>若不为空，则由根结点和其左，其右二叉子树组成</p>
+</li>
+<li><p>操作集：BT∈BinTree，Item∈ElementType，重要操作有：</p>
+<ol>
+<li><p>Boolean IsEmpty(BinTree BT)：判别BT是否为空</p>
+</li>
+<li><p>void Traversal(BinTree BT)：遍历，按某顺序访问每个结点</p>
+</li>
+<li><p>BinTree CreatBinTree()：创建一个二叉树</p>
+<p>常见的遍历方法有：</p>
+<ul>
+<li>void PreOrderTraversal(BinTree BT)：先序—&gt;根、左子树、右子树</li>
+<li>void InOrderTraversal(BinTree BT)：中序—&gt;左子树、根、右子树</li>
+<li>void PostOrderTraversal(BinTree BT)：后序—&gt;左子树、右子树、根</li>
+<li>void LevelOrderTraversal(BinTree BT)：层次遍历，从上到下，从左到右</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>二叉树的存储结构</p>
+<ol>
+<li><p>顺序存储结构</p>
+<p>完全二叉树：按从上至下、从左到右顺序存储<strong>n</strong>个结点的完全二叉树的<strong>结点父子关系</strong></p>
+<img src="https://img-blog.csdnimg.cn/20181026115118948.jpg">
+
+<ul>
+<li>非根结点（序号i＞1）的父结点的序号是 <strong>[i/2]</strong></li>
+<li>结点（序号为i）的<strong>左孩子</strong>结点的序号是<strong>2i</strong>，（若<strong>2i≤n</strong>，否则没有左孩子）</li>
+<li>结点（序号为i）的<strong>右孩子</strong>结点的序号是<strong>2i+1</strong>，（若<strong>2i+1≤n</strong>，否则没有右孩子）</li>
+</ul>
+<p>一般二叉树：存储方式和完全二叉树一样，并符合完全二叉树特性（会造成一定的空间浪费）</p>
+<img src="https://img-blog.csdnimg.cn/20181026115134161.jpg">
+</li>
+<li><p>链表存储</p>
+<table style="text-align:center">
+    <tr>
+        <td>Left</td>
+        <td>Data</td>
+        <td>Right</td>
+    </tr>
+</table>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> *<span class="title">BinTree</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span>&#123;</span></span><br><span class="line">	Element Data;  <span class="comment">// 存值 </span></span><br><span class="line">	BinTree Left;    <span class="comment">// 左儿子结点 </span></span><br><span class="line">	BinTree Right;   <span class="comment">// 右儿子结点 </span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-3-二叉树的遍历"><a href="#3-3-二叉树的遍历" class="headerlink" title="3.3 二叉树的遍历"></a>3.3 二叉树的遍历</h4><ul>
+<li><p>先序遍历</p>
+<p>遍历过程为：</p>
+<ol>
+<li><p>访问根结点</p>
+</li>
+<li><p>先序遍历其左子树</p>
+</li>
+<li><p>先序遍历其右子树</p>
+<img src="https://img-blog.csdnimg.cn/20181030202740803.jpg">
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*递归实现*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">PreOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(BT)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,BT-&gt;Data);  <span class="comment">// 打印根 </span></span><br><span class="line">		PreOrderTraversal(BT-&gt;Left);  <span class="comment">// 进入左子树 </span></span><br><span class="line">		PreOrderTraversal(BT-&gt;Right);  <span class="comment">// 进入右子树 </span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*非递归实现*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	BinTree T = BT;</span><br><span class="line">	Stack S = CreateStack();  <span class="comment">// 创建并初始化堆栈 S</span></span><br><span class="line">	<span class="keyword">while</span>(T || !IsEmpty(S))&#123;  <span class="comment">// 当树不为空或堆栈不空 </span></span><br><span class="line">		<span class="keyword">while</span>(T)&#123;     </span><br><span class="line">			Push(S,T);    <span class="comment">// 压栈，第一次遇到该结点 </span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,T-&gt;Data);  <span class="comment">// 访问结点</span></span><br><span class="line">			T = T-&gt;Left;   <span class="comment">// 遍历左子树 </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(!IsEmpty(S))&#123;  <span class="comment">// 当堆栈不空 </span></span><br><span class="line">			T = Pop(S);    <span class="comment">// 出栈，第二次遇到该结点 </span></span><br><span class="line">			T = T-&gt;Right;  <span class="comment">// 访问右结点 </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>中序遍历</p>
+<p>递归过程：</p>
+<ol>
+<li><p>中序遍历其左子树</p>
+</li>
+<li><p>访问根结点</p>
+</li>
+<li><p>中序遍历其右子树</p>
+<img src="https://img-blog.csdnimg.cn/2018103020280133.jpg">
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*递归实现*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(BT)&#123;</span><br><span class="line">		InOrderTraversal(BT-&gt;Left);  <span class="comment">// 进入左子树 </span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,BT-&gt;Data);  <span class="comment">// 打印根 </span></span><br><span class="line">		InOrderTraversal(BT-&gt;Right);  <span class="comment">// 进入右子树 </span></span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*非递归实现*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	BinTree T = BT;</span><br><span class="line">	Stack S = CreateStack();  <span class="comment">// 创建并初始化堆栈 S</span></span><br><span class="line">	<span class="keyword">while</span>(T || !IsEmpty(S))&#123;  <span class="comment">// 当树不为空或堆栈不空 </span></span><br><span class="line">		<span class="keyword">while</span>(T)&#123;     </span><br><span class="line">			Push(S,T);    <span class="comment">// 压栈</span></span><br><span class="line">			T = T-&gt;Left;   <span class="comment">// 遍历左子树 </span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(!IsEmpty(S))&#123;  <span class="comment">// 当堆栈不空 </span></span><br><span class="line">			T = Pop(S);    <span class="comment">// 出栈</span></span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,T-&gt;Data);  <span class="comment">// 访问结点</span></span><br><span class="line">			T = T-&gt;Right;  <span class="comment">// 访问右结点 </span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125; </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>后序遍历</p>
+<p>遍历过程</p>
+<ol>
+<li><p>后序遍历其左子树</p>
+</li>
+<li><p>后序遍历其右子树</p>
+</li>
+<li><p>访问根节点</p>
+<img src="https://img-blog.csdnimg.cn/2018103020284288.jpg">
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*递归实现*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(BT)&#123;</span><br><span class="line">		PostOrderTraversal(BT-&gt;Left);  <span class="comment">// 进入左子树 </span></span><br><span class="line">		PostOrderTraversal(BT-&gt;Right);  <span class="comment">// 进入右子树 </span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,BT-&gt;Data);  <span class="comment">// 打印根 </span></span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*非递归实现*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	BinTree T = BT;</span><br><span class="line">	Stack S = CreateStack();  <span class="comment">// 创建并初始化堆栈 S</span></span><br><span class="line">	<span class="built_in">vector</span>&lt;BinTree&gt; v;   <span class="comment">// 创建存储树结点的动态数组</span></span><br><span class="line">	Push(S,T);</span><br><span class="line">	<span class="keyword">while</span>(!IsEmpty(S))&#123;  <span class="comment">// 当树不为空或堆栈不空 </span></span><br><span class="line">		T = Pop(S);</span><br><span class="line">		v.push_back(T);  <span class="comment">// 出栈元素进数组</span></span><br><span class="line">		<span class="keyword">if</span>(T-&gt;Left)</span><br><span class="line">			Push(S,T-&gt;Left);</span><br><span class="line">		<span class="keyword">if</span>(T-&gt;Right)</span><br><span class="line">			Push(S,T-&gt;Right);</span><br><span class="line">	&#125;</span><br><span class="line">	reverse(v.begin(),v.end());  <span class="comment">// 逆转 </span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;v.size();i++)  <span class="comment">// 输出数组元素</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,v[i]-&gt;Data);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>总结</p>
+<ul>
+<li><p>先序遍历是第一次”遇到”该结点时访问</p>
+</li>
+<li><p>中序遍历是第二次”遇到”该结点（此时该结点从左子树返回）时访问</p>
+</li>
+<li><p>后序遍历是第三次”遇到”该结点（此时该结点从右子树返回）时访问</p>
+<img src="https://img-blog.csdnimg.cn/20181030202857229.jpg">
+</li>
+</ul>
+</li>
+<li><p>层序遍历</p>
+<p>二叉树遍历的核心问题：二维结构的线性化</p>
+<ul>
+<li>从结点访问其左、右儿子结点</li>
+<li>访问左儿子后，右儿子结点怎么办？<ul>
+<li>需要一个存储结构保存暂时不访问的结点</li>
+<li>存储结构：堆栈（保存自己）、队列（保存右儿子）</li>
+</ul>
+</li>
+</ul>
+<p>队列实现：遍历从根结点开始，首先将根结点入队，然后开始执行循环：结点入队、访问该结点、其左右儿子入队</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">LevelOrderTraversal</span><span class="params">(BinTree BT)</span></span>&#123;</span><br><span class="line">	<span class="built_in">queue</span>&lt;BinTree&gt; q;   <span class="comment">// 创建队列</span></span><br><span class="line">	BinTree T;</span><br><span class="line">	<span class="keyword">if</span>(!BT)</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	q.push(BT);  <span class="comment">// BT 入队 </span></span><br><span class="line">	<span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">		T = q.front();  <span class="comment">// 访问队首元素 </span></span><br><span class="line">		q.pop();  <span class="comment">// 出队</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,T-&gt;Data);</span><br><span class="line">		<span class="keyword">if</span>(T-&gt;Left)  <span class="comment">// 如果存在左儿子结点</span></span><br><span class="line">			q.push(T-&gt;Left);  <span class="comment">// 入队</span></span><br><span class="line">	 	<span class="keyword">if</span>(T-&gt;Right)</span><br><span class="line">	 		q.push(T-&gt;Right);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag"># C语言</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/18/%E4%BD%9C%E6%81%AF%E6%97%B6%E9%97%B4/" rel="prev" title="作息时间">
+      <i class="fa fa-chevron-left"></i> 作息时间
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A4%8D%E4%B9%A0%EF%BC%88C%E8%AF%AD%E8%A8%80%EF%BC%89-%E4%B8%AD%E5%9B%BD%E5%A4%A7%E5%AD%A6%E6%85%95%E8%AF%BE%EF%BC%88%E6%B5%99%E5%A4%A7%EF%BC%9A%E9%99%88%E8%B6%8A%E3%80%81%E4%BD%95%E9%92%A6%E9%93%AD%E6%95%99%E6%8E%88%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">数据结构复习（C语言）   中国大学慕课（浙大：陈越、何钦铭教授）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E8%AE%B2-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.1.</span> <span class="nav-text">第一讲 基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 什么是数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E4%BB%80%E4%B9%88%E6%98%AF%E7%AE%97%E6%B3%95"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 什么是算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E6%9C%80%E5%A4%A7%E5%AD%90%E5%88%97%E5%92%8C%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 最大子列和问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E8%AE%B2-%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84"><span class="nav-number">1.2.</span> <span class="nav-text">第二讲 线性结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E7%BA%BF%E6%80%A7%E8%A1%A8%E5%8F%8A%E5%85%B6%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 线性表及其实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%A0%86%E6%A0%88"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 堆栈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E9%98%9F%E5%88%97"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 队列</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E8%AE%B2-%E6%A0%91%EF%BC%88%E4%B8%8A%EF%BC%89"><span class="nav-number">1.3.</span> <span class="nav-text">第三讲 树（上）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-%E6%A0%91%E4%B8%8E%E6%A0%91%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 树与树的表示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%8F%8A%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 二叉树及存储结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 二叉树的遍历</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wilburn's blog"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Wilburn's blog</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wilburn's blog</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
