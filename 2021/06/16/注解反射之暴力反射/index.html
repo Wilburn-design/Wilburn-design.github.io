@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="暴力反射今天刷视频刷到了手动自定义注解的实现，看到其中有一项可以将private私有属性进行强制反射赋值，于是看完视频后手动实现了一下。代码如下 实现的两个注解 MyCompoent（类的注入注解）  12345678910111213141516171819package com.wilburn.annotation;import java.lang.annotation.ElementType">
+  <meta name="description" content="暴力反射今天刷视频刷到了手动自定义注解的实现，看到其中有一项可以将private私有属性进行强制反射赋值，于是看完视频后手动实现了一下。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="注解反射之暴力反射">
+<meta property="og:title" content="注解反射实现之暴力反射">
 <meta property="og:url" content="http://example.com/2021/06/16/%E6%B3%A8%E8%A7%A3%E5%8F%8D%E5%B0%84%E4%B9%8B%E6%9A%B4%E5%8A%9B%E5%8F%8D%E5%B0%84/index.html">
 <meta property="og:site_name" content="Welcome">
-<meta property="og:description" content="暴力反射今天刷视频刷到了手动自定义注解的实现，看到其中有一项可以将private私有属性进行强制反射赋值，于是看完视频后手动实现了一下。代码如下 实现的两个注解 MyCompoent（类的注入注解）  12345678910111213141516171819package com.wilburn.annotation;import java.lang.annotation.ElementType">
+<meta property="og:description" content="暴力反射今天刷视频刷到了手动自定义注解的实现，看到其中有一项可以将private私有属性进行强制反射赋值，于是看完视频后手动实现了一下。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-16T07:45:00.000Z">
-<meta property="article:modified_time" content="2021-06-16T07:58:57.793Z">
+<meta property="article:modified_time" content="2021-06-16T08:01:17.376Z">
 <meta property="article:author" content="Wilburn&#39;s blog">
 <meta property="article:tag" content="反射">
 <meta name="twitter:card" content="summary">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>注解反射之暴力反射 | Welcome</title>
+  <title>注解反射实现之暴力反射 | Welcome</title>
   
 
 
@@ -179,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          注解反射之暴力反射
+          注解反射实现之暴力反射
         </h1>
 
         <div class="post-meta">
@@ -190,7 +190,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-06-16 15:45:00 / 修改时间：15:58:57" itemprop="dateCreated datePublished" datetime="2021-06-16T15:45:00+08:00">2021-06-16</time>
+              <time title="创建时间：2021-06-16 15:45:00 / 修改时间：16:01:17" itemprop="dateCreated datePublished" datetime="2021-06-16T15:45:00+08:00">2021-06-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -213,7 +213,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="暴力反射"><a href="#暴力反射" class="headerlink" title="暴力反射"></a>暴力反射</h3><p>今天刷视频刷到了手动自定义注解的实现，看到其中有一项可以将private私有属性进行强制反射赋值，于是看完视频后手动实现了一下。代码如下</p>
+        <h3 id="暴力反射"><a href="#暴力反射" class="headerlink" title="暴力反射"></a>暴力反射</h3><p>今天刷视频刷到了手动自定义注解的实现，看到其中有一项可以将private私有属性进行强制反射赋值，于是看完视频后手动实现了一下。<a id="more"></a>代码如下</p>
 <h5 id="实现的两个注解"><a href="#实现的两个注解" class="headerlink" title="实现的两个注解"></a>实现的两个注解</h5><ul>
 <li>MyCompoent（类的注入注解）</li>
 </ul>
@@ -245,7 +245,7 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" rel="prev" title="设计模式">
+    <a href="/2021/05/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/" rel="prev" title="设计模式">
       <i class="fa fa-chevron-left"></i> 设计模式
     </a></div>
       <div class="post-nav-item"></div>

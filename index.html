@@ -174,7 +174,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/06/16/%E6%B3%A8%E8%A7%A3%E5%8F%8D%E5%B0%84%E4%B9%8B%E6%9A%B4%E5%8A%9B%E5%8F%8D%E5%B0%84/" class="post-title-link" itemprop="url">注解反射之暴力反射</a>
+            <a href="/2021/06/16/%E6%B3%A8%E8%A7%A3%E5%8F%8D%E5%B0%84%E4%B9%8B%E6%9A%B4%E5%8A%9B%E5%8F%8D%E5%B0%84/" class="post-title-link" itemprop="url">注解反射实现之暴力反射</a>
         </h2>
 
         <div class="post-meta">
@@ -185,7 +185,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-06-16 15:45:00 / 修改时间：15:58:57" itemprop="dateCreated datePublished" datetime="2021-06-16T15:45:00+08:00">2021-06-16</time>
+              <time title="创建时间：2021-06-16 15:45:00 / 修改时间：16:01:17" itemprop="dateCreated datePublished" datetime="2021-06-16T15:45:00+08:00">2021-06-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -208,21 +208,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="暴力反射"><a href="#暴力反射" class="headerlink" title="暴力反射"></a>暴力反射</h3><p>今天刷视频刷到了手动自定义注解的实现，看到其中有一项可以将private私有属性进行强制反射赋值，于是看完视频后手动实现了一下。代码如下</p>
-<h5 id="实现的两个注解"><a href="#实现的两个注解" class="headerlink" title="实现的两个注解"></a>实现的两个注解</h5><ul>
-<li>MyCompoent（类的注入注解）</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wilburn.annotation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wilburn</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/6/16 15:05</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(ElementType.TYPE)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyCompoent &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<ul>
-<li>MyValues（类的属性赋值注解）</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wilburn.annotation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wilburn</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/6/16 15:06</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(ElementType.FIELD)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyValues &#123;</span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="实体类"><a href="#实体类" class="headerlink" title="实体类"></a>实体类</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wilburn.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.wilburn.annotation.MyCompoent;</span><br><span class="line"><span class="keyword">import</span> com.wilburn.annotation.MyValues;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wilburn</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/6/16 15:03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@MyCompoent</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">    <span class="meta">@MyValues(&quot;1&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="meta">@MyValues(&quot;张三&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h5 id="测试类实现暴力反射"><a href="#测试类实现暴力反射" class="headerlink" title="测试类实现暴力反射"></a>测试类实现暴力反射</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wilburn;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.wilburn.annotation.MyCompoent;</span><br><span class="line"><span class="keyword">import</span> com.wilburn.annotation.MyValues;</span><br><span class="line"><span class="keyword">import</span> com.wilburn.entity.People;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> wilburn</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2021/6/16 15:09</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Class&lt;People&gt; peopleClass = People.class;</span><br><span class="line">        MyCompoent myCompoent = peopleClass.getAnnotation(MyCompoent.class);</span><br><span class="line">        <span class="keyword">if</span>(myCompoent!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            Constructor&lt;People&gt; constructor = peopleClass.getConstructor(<span class="keyword">null</span>);</span><br><span class="line">            People people = constructor.newInstance();</span><br><span class="line">            Field[] declaredField = people.getClass().getDeclaredFields();</span><br><span class="line">            <span class="keyword">for</span>(Field field : declaredField)&#123;</span><br><span class="line">                MyValues value = field.getAnnotation(MyValues.class);</span><br><span class="line">                <span class="keyword">if</span>(value!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                    <span class="comment">//暴力反射</span></span><br><span class="line">                    field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">switch</span> (field.getType().getName())&#123;</span><br><span class="line">                        <span class="keyword">case</span> <span class="string">&quot;java.lang.Integer&quot;</span> : &#123;</span><br><span class="line">                            field.set(people,Integer.parseInt(value.value()));;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="keyword">case</span> <span class="string">&quot;java.lang.String&quot;</span> : &#123;</span><br><span class="line">                            field.set(people,value.value());;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="comment">//...</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(people);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>总结：private 的属性不能直接进行赋值的说法不是绝对的，<code>field.setAccessible(true);</code>可以通过暴力反射进行赋值。</p>
-
+          <h3 id="暴力反射"><a href="#暴力反射" class="headerlink" title="暴力反射"></a>暴力反射</h3><p>今天刷视频刷到了手动自定义注解的实现，看到其中有一项可以将private私有属性进行强制反射赋值，于是看完视频后手动实现了一下。
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/06/16/%E6%B3%A8%E8%A7%A3%E5%8F%8D%E5%B0%84%E4%B9%8B%E6%9A%B4%E5%8A%9B%E5%8F%8D%E5%B0%84/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -241,7 +235,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/05/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -255,7 +249,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/05/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">设计模式</a>
+            <a href="/2021/05/30/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/" class="post-title-link" itemprop="url">设计模式</a>
         </h2>
 
         <div class="post-meta">
@@ -264,10 +258,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-05-30 10:26:00 / 修改时间：13:11:44" itemprop="dateCreated datePublished" datetime="2021-05-30T10:26:00+08:00">2021-05-30</time>
+              <time title="创建时间：2021-05-30 10:26:00" itemprop="dateCreated datePublished" datetime="2021-05-30T10:26:00+08:00">2021-05-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-16 16:02:47" itemprop="dateModified" datetime="2021-06-16T16:02:47+08:00">2021-06-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -311,9 +311,8 @@
 </ul>
 </li>
 <li><p>里氏代换原则(Liskov Substitution Principle, LSP)</p>
-<ul>
-<li>定义：所有引用基类（父类）的地方必须能透明地使用其子类的对象。</li>
-</ul>
+</li>
+<li><p>定义：所有引用基类（父类）的地方必须能透明地使用其子类的对象。</p>
 </li>
 <li><p>依赖倒置原则（Dependence Inversion Principle，DIP）</p>
 <ul>
@@ -349,16 +348,13 @@
 <li><p>迪米特法则要求限制软件实体之间通信的宽度和深度，正确使用迪米特法则将有以下两个优点。</p>
 <ul>
 <li>降低了类之间的耦合度，提高了模块的相对独立性。</li>
+<li>由于亲合度降低，从而提高了类的可复用率和系统的扩展性。</li>
 </ul>
 </li>
 </ul>
+<p>但是，过度使用迪米特法则会使系统产生大量的中介类，从而增加系统的复杂性，使模块之间的通信效率降低。所以，在釆用迪米特法则时需要反复权衡，确保高内聚和低耦合的同时，保证系统的结构清晰</p>
 </li>
 </ul>
-<pre><code>- 由于亲合度降低，从而提高了类的可复用率和系统的扩展性。
-
-
-但是，过度使用迪米特法则会使系统产生大量的中介类，从而增加系统的复杂性，使模块之间的通信效率降低。所以，在釆用迪米特法则时需要反复权衡，确保高内聚和低耦合的同时，保证系统的结构清晰
-</code></pre>
 <ul>
 <li>合成复用原则(Composite Reuse Principle)<ul>
 <li>定义：尽量使用合成/聚合的方式，而不是使用继承。</li>
