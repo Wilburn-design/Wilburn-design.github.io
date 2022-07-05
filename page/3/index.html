@@ -276,7 +276,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-04 21:31:05" itemprop="dateModified" datetime="2022-07-04T21:31:05+08:00">2022-07-04</time>
+                <time title="修改时间：2022-07-05 21:47:49" itemprop="dateModified" datetime="2022-07-05T21:47:49+08:00">2022-07-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -299,15 +299,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-
-<h3 id="1-左上角返回问题"><a href="#1-左上角返回问题" class="headerlink" title="1.左上角返回问题"></a>1.左上角返回问题</h3><p>若是不想点击返回访问的上一个页面，可以在 onUnload: function () {},方法中添加  wx.reLaunch方法。eg:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">onUnload: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  wx.reLaunch(&#123;</span><br><span class="line">    url: <span class="string">&#x27;../home_page/index&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="2-不同页面之间传值的问题"><a href="#2-不同页面之间传值的问题" class="headerlink" title="2.不同页面之间传值的问题"></a>2.不同页面之间传值的问题</h3><p>只需在URL后面加上’？value=’+value即可，在另一边的onLoad中取出，再将其存入data中。eg:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//传值页面</span></span><br><span class="line">questionnaireContent: <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> questionnaireId = e.target.dataset.id;</span><br><span class="line">  wx.navigateTo(&#123;</span><br><span class="line">    url: <span class="string">&#x27;../questionnaire_content/index?questionnaireId=&#x27;</span>+questionnaireId,</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//接收页面</span></span><br><span class="line">onLoad: <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.setData(&#123;</span><br><span class="line">    content_index:options.questionnaireId,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="3-想要检查json中的数据可以将其遍历出来"><a href="#3-想要检查json中的数据可以将其遍历出来" class="headerlink" title="3.想要检查json中的数据可以将其遍历出来"></a>3.想要检查json中的数据可以将其遍历出来</h3><p>eg:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.data.radio = <span class="built_in">Array</span>.from(<span class="built_in">this</span>.data.questionnaires, <span class="function"><span class="params">i</span> =&gt;</span> &#123;</span><br><span class="line"> 	<span class="keyword">let</span> answers = <span class="built_in">Array</span>.from(i.questionnaire, <span class="function"><span class="params">j</span> =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">          q_id: j.q_id,</span><br><span class="line">          answer: j.answer</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      name: i.name,</span><br><span class="line">      answers: answers</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">this</span>.data.radio);</span><br></pre></td></tr></table></figure>
-<h3 id="4-打印时间"><a href="#4-打印时间" class="headerlink" title="4.打印时间"></a>4.打印时间</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当前日期  YYYY-MM-DD</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>().toISOString().substring(<span class="number">0</span>, <span class="number">10</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>().toJSON().substring(<span class="number">0</span>, <span class="number">10</span>)); </span><br><span class="line"><span class="comment">// 当前日期  YYYY/MM/DD</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>().toLocaleDateString());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当前时间  hh:mm:ss    </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>().toTimeString().substring(<span class="number">0</span>,<span class="number">8</span>));</span><br><span class="line"> </span><br><span class="line"> <span class="comment">// 当前日期时间  YYYY-MM-DD hh:mm:ss    </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>().toJSON().substring(<span class="number">0</span>, <span class="number">10</span>) + <span class="string">&#x27; &#x27;</span> + <span class="keyword">new</span> <span class="built_in">Date</span>().toTimeString().substring(<span class="number">0</span>,<span class="number">8</span>)); </span><br></pre></td></tr></table></figure>
+          <p>记录一下小程序开发中的一些基础功能。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/10/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%94%A8%E5%8A%9F%E8%83%BD/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -357,7 +357,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-04 21:27:10" itemprop="dateModified" datetime="2022-07-04T21:27:10+08:00">2022-07-04</time>
+                <time title="修改时间：2022-07-05 21:48:17" itemprop="dateModified" datetime="2022-07-05T21:48:17+08:00">2022-07-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -380,14 +380,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-
-<h3 id="1-为什么data-value传值js接收不到"><a href="#1-为什么data-value传值js接收不到" class="headerlink" title="1.为什么data-value传值js接收不到"></a>1.为什么data-<u><em>value</em></u>传值js接收不到</h3><p>随着bind:click,bind:change等调用方法进行传值，一般用data-<u><em>value</em></u>进行传值，value为变量名称，切记：变量名称要小写。</p>
-<h3 id="2-this-setData-is-not-a-function问题"><a href="#2-this-setData-is-not-a-function问题" class="headerlink" title="2.this.setData is not a function问题"></a>2.this.setData is not a function问题</h3><p>当你在js中借用其他的方法例如setTimeout等方法，不可直接用this.setData,要在别的地方转成 var that = this, 在用that.setData来修改数据。eg:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">onLoad: <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> that = <span class="built_in">this</span>;</span><br><span class="line">	<span class="built_in">this</span>.timerSetter(that);</span><br><span class="line">&#125;,</span><br><span class="line">timerSetter: <span class="function"><span class="title">fuction</span>(<span class="params">that</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> timer = that.data.timer;</span><br><span class="line">    <span class="keyword">var</span> time = <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      that.setData(&#123;</span><br><span class="line">        timer:timer-<span class="number">1</span></span><br><span class="line">      &#125;);</span><br><span class="line">      that.timerSetter(that);</span><br><span class="line">    &#125;,<span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="3-为什么我的data中的数据修改了，页面却没变化？"><a href="#3-为什么我的data中的数据修改了，页面却没变化？" class="headerlink" title="3.为什么我的data中的数据修改了，页面却没变化？"></a>3.为什么我的data中的数据修改了，页面却没变化？</h3><p>当我们修改数据且需要显示到页面动态变化时，我们需要调用this.setData方法来刷新页面。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.setData(&#123;</span><br><span class="line">	</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
+          <p>记录一下小程序中易出现的错误。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/10/%E5%86%99%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -437,7 +438,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-04 21:49:48" itemprop="dateModified" datetime="2022-07-04T21:49:48+08:00">2022-07-04</time>
+                <time title="修改时间：2022-07-05 21:45:34" itemprop="dateModified" datetime="2022-07-05T21:45:34+08:00">2022-07-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -460,27 +461,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-
-<h3 id="1-手动将需要添加的端口添加到安全组"><a href="#1-手动将需要添加的端口添加到安全组" class="headerlink" title="1.手动将需要添加的端口添加到安全组"></a>1.手动将需要添加的端口添加到安全组</h3><img src="..\..\..\..\images\safegroup.png">
-
-<h3 id="2-输入命令开放端口"><a href="#2-输入命令开放端口" class="headerlink" title="2.输入命令开放端口"></a>2.输入命令开放端口</h3><ul>
-<li>开放端口</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=端口号/tcp --permanent</span><br></pre></td></tr></table></figure>
-<ul>
-<li>关闭端口</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --remove-port=端口号/tcp --permanent</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使配置立即生效</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-<ul>
-<li>最后查看该端口是否被防火墙开放</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --list-ports</span><br></pre></td></tr></table></figure>
-
+          <p>阿里云服务器端口开放问题。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/03/%E9%98%BF%E9%87%8C%E4%BA%91%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8%E7%BB%84%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99%E9%97%AE%E9%A2%98/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -530,7 +519,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-04 21:24:36" itemprop="dateModified" datetime="2022-07-04T21:24:36+08:00">2022-07-04</time>
+                <time title="修改时间：2022-07-05 21:49:37" itemprop="dateModified" datetime="2022-07-05T21:49:37+08:00">2022-07-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -553,17 +542,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-
-<h3 id="一、使用gitee的图片作为src的时候，显示不出来图片怎么办？"><a href="#一、使用gitee的图片作为src的时候，显示不出来图片怎么办？" class="headerlink" title="一、使用gitee的图片作为src的时候，显示不出来图片怎么办？"></a>一、使用gitee的图片作为src的时候，显示不出来图片怎么办？</h3><p>使用gitee图片链接时应该图片的<strong>“原始数据”</strong>，而不是地址栏上的链接。</p>
-<img src="..\..\..\..\images\gitee000.png">
-
-<h3 id="二、使用gitee部署博客或网页时，为什么没变化？"><a href="#二、使用gitee部署博客或网页时，为什么没变化？" class="headerlink" title="二、使用gitee部署博客或网页时，为什么没变化？"></a>二、使用gitee部署博客或网页时，为什么没变化？</h3><p>使用gitee部署博客或者网页，每次push完都需要点击Gitee Pages下的启动按钮进行重新部署。</p>
-<img src="..\..\..\..\images\gitee001.png">
-
-<h3 id="三、使用gitee部署博客或网页时，强制使用HTTPS为什么样式不见了？"><a href="#三、使用gitee部署博客或网页时，强制使用HTTPS为什么样式不见了？" class="headerlink" title="三、使用gitee部署博客或网页时，强制使用HTTPS为什么样式不见了？"></a>三、使用gitee部署博客或网页时，强制使用HTTPS为什么样式不见了？</h3><p>使用gitee部署博客或网页时，强制使用HTTPS需要进行修改全局配置。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global url.&quot;https://github.com/&quot;.insteadOf git@github.com:</span><br><span class="line">git config --global url.&quot;https://&quot;.insteadOf git://</span><br></pre></td></tr></table></figure>
-
+          <p>记录一下gitee产生的问题。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/02/20/gitee%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -613,7 +600,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-17 14:20:42" itemprop="dateModified" datetime="2021-06-17T14:20:42+08:00">2021-06-17</time>
+                <time title="修改时间：2022-07-05 21:53:07" itemprop="dateModified" datetime="2022-07-05T21:53:07+08:00">2022-07-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -636,7 +623,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="一-特点"><a href="#一-特点" class="headerlink" title="一.特点"></a>一.特点</h3><p>分布式相比于集中式的最大区别在于开发者可以提交到本地，每个开发者通过克隆（git clone），在本地机器上拷贝一个完整的Git仓库。
+          <p>记录一下git使用小结。
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/12/10/git%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/#more" rel="contents">
@@ -943,7 +930,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-07-04 21:49:59" itemprop="dateModified" datetime="2022-07-04T21:49:59+08:00">2022-07-04</time>
+                <time title="修改时间：2022-07-05 21:44:57" itemprop="dateModified" datetime="2022-07-05T21:44:57+08:00">2022-07-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -966,7 +953,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>快捷键如下：</p>
+          <p>快捷键做了一些总结。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/02/01/%E4%BD%BF%E7%94%A8Typora%E6%9D%A5%E7%BC%96%E8%BE%91/#more" rel="contents">
