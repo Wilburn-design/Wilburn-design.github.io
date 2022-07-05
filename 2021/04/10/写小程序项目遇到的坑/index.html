@@ -20,21 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1.为什么data-value传值js接收不到随着bind:click,bind:change等调用方法进行传值，一般用data-value进行传值，value为变量名称，切记：变量名称要小写。">
+  <meta name="description" content="1.为什么data-value传值js接收不到随着bind:click,bind:change等调用方法进行传值，一般用data-value进行传值，value为变量名称，切记：变量名称要小写。 2.this.setData is not a function问题当你在js中借用其他的方法例如setTimeout等方法，不可直接用this.setData,要在别的地方转成 var that &#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="小程序踩坑记录">
 <meta property="og:url" content="http://example.com/2021/04/10/%E5%86%99%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/index.html">
 <meta property="og:site_name" content="Welcome">
-<meta property="og:description" content="1.为什么data-value传值js接收不到随着bind:click,bind:change等调用方法进行传值，一般用data-value进行传值，value为变量名称，切记：变量名称要小写。">
+<meta property="og:description" content="1.为什么data-value传值js接收不到随着bind:click,bind:change等调用方法进行传值，一般用data-value进行传值，value为变量名称，切记：变量名称要小写。 2.this.setData is not a function问题当你在js中借用其他的方法例如setTimeout等方法，不可直接用this.setData,要在别的地方转成 var that &#x3D;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-10T07:01:00.000Z">
-<meta property="article:modified_time" content="2021-06-17T06:25:27.653Z">
+<meta property="article:modified_time" content="2022-07-04T13:27:10.189Z">
 <meta property="article:author" content="Wilburn&#39;s blog">
+<meta property="article:tag" content="小程序">
 <meta property="article:tag" content="WXML">
 <meta property="article:tag" content="WXSS">
 <meta property="article:tag" content="JS">
-<meta property="article:tag" content="坑">
-<meta property="article:tag" content="小程序">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2021/04/10/%E5%86%99%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
@@ -200,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-17 14:25:27" itemprop="dateModified" datetime="2021-06-17T14:25:27+08:00">2021-06-17</time>
+                <time title="修改时间：2022-07-04 21:27:10" itemprop="dateModified" datetime="2022-07-04T21:27:10+08:00">2022-07-04</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,7 +222,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="1-为什么data-value传值js接收不到"><a href="#1-为什么data-value传值js接收不到" class="headerlink" title="1.为什么data-value传值js接收不到"></a>1.为什么data-<u><em>value</em></u>传值js接收不到</h3><p>随着bind:click,bind:change等调用方法进行传值，一般用data-<u><em>value</em></u>进行传值，value为变量名称，切记：变量名称要小写。<a id="more"></a></p>
+        <a id="more"></a>
+
+<h3 id="1-为什么data-value传值js接收不到"><a href="#1-为什么data-value传值js接收不到" class="headerlink" title="1.为什么data-value传值js接收不到"></a>1.为什么data-<u><em>value</em></u>传值js接收不到</h3><p>随着bind:click,bind:change等调用方法进行传值，一般用data-<u><em>value</em></u>进行传值，value为变量名称，切记：变量名称要小写。</p>
 <h3 id="2-this-setData-is-not-a-function问题"><a href="#2-this-setData-is-not-a-function问题" class="headerlink" title="2.this.setData is not a function问题"></a>2.this.setData is not a function问题</h3><p>当你在js中借用其他的方法例如setTimeout等方法，不可直接用this.setData,要在别的地方转成 var that = this, 在用that.setData来修改数据。eg:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">onLoad: <span class="function"><span class="keyword">function</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> that = <span class="built_in">this</span>;</span><br><span class="line">	<span class="built_in">this</span>.timerSetter(that);</span><br><span class="line">&#125;,</span><br><span class="line">timerSetter: <span class="function"><span class="title">fuction</span>(<span class="params">that</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> timer = that.data.timer;</span><br><span class="line">    <span class="keyword">var</span> time = <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      that.setData(&#123;</span><br><span class="line">        timer:timer-<span class="number">1</span></span><br><span class="line">      &#125;);</span><br><span class="line">      that.timerSetter(that);</span><br><span class="line">    &#125;,<span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
 <h3 id="3-为什么我的data中的数据修改了，页面却没变化？"><a href="#3-为什么我的data中的数据修改了，页面却没变化？" class="headerlink" title="3.为什么我的data中的数据修改了，页面却没变化？"></a>3.为什么我的data中的数据修改了，页面却没变化？</h3><p>当我们修改数据且需要显示到页面动态变化时，我们需要调用this.setData方法来刷新页面。</p>
@@ -237,11 +238,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
+              <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"># 小程序</a>
               <a href="/tags/WXML/" rel="tag"># WXML</a>
               <a href="/tags/WXSS/" rel="tag"># WXSS</a>
               <a href="/tags/JS/" rel="tag"># JS</a>
-              <a href="/tags/%E5%9D%91/" rel="tag"># 坑</a>
-              <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"># 小程序</a>
           </div>
 
         
@@ -250,12 +250,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/04/10/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%94%A8%E5%8A%9F%E8%83%BD/" rel="prev" title="小程序实用功能">
-      <i class="fa fa-chevron-left"></i> 小程序实用功能
+    <a href="/2021/03/03/%E9%98%BF%E9%87%8C%E4%BA%91%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E5%85%A8%E7%BB%84%E4%B8%8E%E9%98%B2%E7%81%AB%E5%A2%99%E9%97%AE%E9%A2%98/" rel="prev" title="阿里云部署服务器安全组与防火墙问题">
+      <i class="fa fa-chevron-left"></i> 阿里云部署服务器安全组与防火墙问题
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/04/10/OOAD(%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F)%E4%BD%9C%E4%B8%9A/" rel="next" title="设计模式（OOAD）">
-      设计模式（OOAD） <i class="fa fa-chevron-right"></i>
+    <a href="/2021/04/10/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%94%A8%E5%8A%9F%E8%83%BD/" rel="next" title="小程序实用功能">
+      小程序实用功能 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -331,20 +331,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-count">31</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">34</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -371,7 +371,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
