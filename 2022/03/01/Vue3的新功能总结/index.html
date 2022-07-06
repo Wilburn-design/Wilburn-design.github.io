@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="总结一下vue3的新功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue3新功能总结">
+<meta property="og:url" content="http://example.com/2022/03/01/Vue3%E7%9A%84%E6%96%B0%E5%8A%9F%E8%83%BD%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Welcome">
+<meta property="og:description" content="总结一下vue3的新功能。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-01T06:16:08.000Z">
+<meta property="article:modified_time" content="2022-07-06T13:49:45.014Z">
+<meta property="article:author" content="Wilburn&#39;s blog">
+<meta property="article:tag" content="Vue3">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/03/01/Vue3%E7%9A%84%E6%96%B0%E5%8A%9F%E8%83%BD%E6%80%BB%E7%BB%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Vue3新功能总结 | Welcome</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Welcome</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/01/Vue3%E7%9A%84%E6%96%B0%E5%8A%9F%E8%83%BD%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Wilburn's blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vue3新功能总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-01 14:16:08" itemprop="dateCreated datePublished" datetime="2022-03-01T14:16:08+08:00">2022-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-07-06 21:49:45" itemprop="dateModified" datetime="2022-07-06T21:49:45+08:00">2022-07-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>总结一下vue3的新功能。</p>
+<a id="more"></a>
+
+<h4 id="Composition-API"><a href="#Composition-API" class="headerlink" title="Composition API"></a>Composition API</h4><ul>
+<li><p>Vue2</p>
+<p>Options API ：逻辑相对分散，编写大型组件时，可读性较差。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/components/UserRepositories.vue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  components: &#123; RepositoriesFilters, RepositoriesSortBy, RepositoriesList &#125;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    user: &#123; </span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      repositories: [], <span class="comment">// 1</span></span><br><span class="line">      filters: &#123; ... &#125;, <span class="comment">// 3</span></span><br><span class="line">      searchQuery: <span class="string">&#x27;&#x27;</span> <span class="comment">// 2</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  computed: &#123;</span><br><span class="line">    filteredRepositories () &#123; ... &#125;, <span class="comment">// 3</span></span><br><span class="line">    repositoriesMatchingSearchQuery () &#123; ... &#125;, <span class="comment">// 2</span></span><br><span class="line">  &#125;,</span><br><span class="line">  watch: &#123;</span><br><span class="line">    user: <span class="string">&#x27;getUserRepositories&#x27;</span> <span class="comment">// 1</span></span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    getUserRepositories () &#123;</span><br><span class="line">      <span class="comment">// 使用 `this.user` 获取用户仓库</span></span><br><span class="line">    &#125;, <span class="comment">// 1</span></span><br><span class="line">    updateFilters () &#123; ... &#125;, <span class="comment">// 3</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mounted () &#123;</span><br><span class="line">    <span class="built_in">this</span>.getUserRepositories() <span class="comment">// 1</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li><p>Vue3</p>
+<p>Composition API：逻辑分明，可维护性高。</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/components/UserRepositories.vue</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  components: &#123; RepositoriesFilters, RepositoriesSortBy, RepositoriesList &#125;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    user: &#123;</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">setup</span>(<span class="params">props</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(props) <span class="comment">// &#123; user: &#x27;&#x27; &#125;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;&#125; <span class="comment">// 这里返回的任何内容都可以用于组件的其余部分</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 组件的“其余部分”</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="重写双向数据绑定"><a href="#重写双向数据绑定" class="headerlink" title="重写双向数据绑定"></a>重写双向数据绑定</h4><ul>
+<li><p>Vue2</p>
+<p>基于Object.defineProperty() 实现。</p>
+<p>缺点：</p>
+<ol>
+<li>备份一份数据</li>
+<li>使用for…in…循环每一个key</li>
+<li>不可以监听数组的length变化及push等其他数组操作</li>
+</ol>
+</li>
+<li><p>Vue3</p>
+<p>基于Proxy实现。</p>
+<p>优点：</p>
+<ol>
+<li>可以监听数组变化</li>
+<li>不需要备份数据</li>
+<li>省去for…in…循环每一个key</li>
+<li>代码更简化</li>
+</ol>
+</li>
+</ul>
+<h4 id="VDOM性能瓶颈"><a href="#VDOM性能瓶颈" class="headerlink" title="VDOM性能瓶颈"></a>VDOM性能瓶颈</h4><ul>
+<li><p>Vue2</p>
+<p>采用diff算法</p>
+<p>每次更新diff都是全量对比，diff算法就是进行虚拟节点对比，并返回一个patch对象，用来存储两个节点不同的地方，最后用patch记 录的消息去局部更新Dom。</p>
+</li>
+<li><p>Vue3</p>
+<p>采用patch flag静态树</p>
+<p>每次更新只对比带有标记的，大大减少了非动态内容的对比消耗。</p>
+<p><a target="_blank" rel="noopener" href="https://vue-next-template-explorer.netlify.app/">点击 Vue Template Explorer 进行源码编译查看</a></p>
+</li>
+</ul>
+<h4 id="Vue3-Fragment"><a href="#Vue3-Fragment" class="headerlink" title="Vue3 Fragment"></a>Vue3 Fragment</h4><ul>
+<li>支持多个根节点</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;test1&lt;&#x2F;div&gt;</span><br><span class="line">	&lt;div&gt;test2&lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>DOM中支持 render JSX 写法</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;&gt;</span><br><span class="line">                &#123;<span class="built_in">this</span>.visable ? (</span><br><span class="line">                    &lt;div&gt;&#123;<span class="built_in">this</span>.obj.name&#125;&lt;/div&gt;</span><br><span class="line">                ) : (</span><br><span class="line">                    &lt;div&gt;&#123;<span class="built_in">this</span>.obj.price&#125;&lt;/div&gt;</span><br><span class="line">                )&#125;</span><br><span class="line">                &lt;input v-model=&#123;<span class="built_in">this</span>.val&#125;&gt;&lt;/input&gt;</span><br><span class="line">                &#123;[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>].map(<span class="function">(<span class="params">v</span>) =&gt;</span> &#123;</span><br><span class="line">                   <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;v&#125;-----<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">                &#125;)&#125;</span><br><span class="line">            &lt;/&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;,</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>新增 suspense 和 多v-model 用法</p>
+<ul>
+<li>suspense</li>
+</ul>
+<p>该 <code>&lt;suspense&gt;</code> 组件提供了另一个方案，允许将等待过程提升到组件树中处理，而不是在单个组件中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;suspense&gt;</span><br><span class="line">    &lt;template #default&gt;</span><br><span class="line">      &lt;todo-list &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;template&gt;</span><br><span class="line">    &lt;template #fallback&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        Loading...</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;template&gt;</span><br><span class="line">  &lt;&#x2F;suspense&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    TodoList: defineAsyncComponent(() &#x3D;&gt; import(&#39;.&#x2F;TodoList.vue&#39;))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+
+<ul>
+<li>多v-model绑定</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;user-name</span><br><span class="line">  v-model:first-name&#x3D;&quot;firstName&quot;</span><br><span class="line">  v-model:last-name&#x3D;&quot;lastName&quot;</span><br><span class="line">&gt;&lt;&#x2F;user-name&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<h4 id="Vue3-tree-shaking"><a href="#Vue3-tree-shaking" class="headerlink" title="Vue3 tree shaking"></a>Vue3 tree shaking</h4><p>将全局 API 进行分块。如果你不使用其某些功能，它们将不会包含在你的基础包中。</p>
+<p>比如你要用<code>watch()</code> 就需要 <code>import &#123; watch &#125; from &#39;vue&#39;</code> 其他的<code>computed()</code> 没用到就不会给你打包减少体积</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Vue3/" rel="tag"># Vue3</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/02/16/%E5%89%8D%E7%AB%AF%E5%A5%BD%E7%94%A8%E7%9A%84UI%E5%BA%93%E5%92%8Ccss%E6%A0%B7%E5%BC%8F%E5%BA%93/" rel="prev" title="前端好用的UI库和css样式库">
+      <i class="fa fa-chevron-left"></i> 前端好用的UI库和css样式库
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/14/SpringCloudAlibaba%E4%B8%8ESpringCloud,SpringBoot%E4%BB%A5%E5%8F%8A%E5%85%B6%E4%BB%96%E7%BB%84%E4%BB%B6%E7%89%88%E6%9C%AC%E5%AF%B9%E5%BA%94%E9%97%AE%E9%A2%98/" rel="next" title="Spring Cloud Alibaba与Spring Boot、Spring Cloud和其他组件之间的版本管理">
+      Spring Cloud Alibaba与Spring Boot、Spring Cloud和其他组件之间的版本管理 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Composition-API"><span class="nav-number">1.</span> <span class="nav-text">Composition API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A"><span class="nav-number">2.</span> <span class="nav-text">重写双向数据绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VDOM%E6%80%A7%E8%83%BD%E7%93%B6%E9%A2%88"><span class="nav-number">3.</span> <span class="nav-text">VDOM性能瓶颈</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue3-Fragment"><span class="nav-number">4.</span> <span class="nav-text">Vue3 Fragment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue3-tree-shaking"><span class="nav-number">5.</span> <span class="nav-text">Vue3 tree shaking</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Wilburn's blog"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">Wilburn's blog</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">43</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">64</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wilburn's blog</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
